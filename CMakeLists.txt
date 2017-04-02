@@ -10,8 +10,8 @@ configure_file (
 )
 
 set(TARGET simple-reason)
-set(HEADERS ${PROJECT_SOURCE_DIR}/headers)
-set(SOURCES ${PROJECT_SOURCE_DIR}/sources)
+set(HEADERS ${PROJECT_SOURCE_DIR}/include)
+set(SOURCES ${PROJECT_SOURCE_DIR}/src)
 
 include_directories(${HEADERS})
 include_directories(${PROJECT_BINARY_DIR})
