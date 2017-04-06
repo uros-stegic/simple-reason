@@ -9,11 +9,6 @@ class AtomicFormula : public BaseFormula {
 public:
     virtual int complexity() const;
     virtual Formula substitute(const Formula&, const Formula&) const;
-    virtual Formula simplify() const;
-
-protected:
-    virtual Formula m_nnf() const;
-    virtual Formula m_cnf() const;
 };
 }
 

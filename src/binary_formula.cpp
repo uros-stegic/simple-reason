@@ -58,9 +58,3 @@ void BinaryFormula::print_formula(std::ostream& out) const
         out << ")";
     }
 }
-
-Formula BinaryFormula::m_cnf() const
-{
-    return shared_from_this();
-}
-

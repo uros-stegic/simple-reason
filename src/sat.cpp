@@ -9,14 +9,6 @@ SAT::SAT()
     , m_name("")
     , m_cnf(std::make_shared<CNF>())
 {}
-SAT::SAT(const Formula& f)
-    : m_num_clauses(0)
-    , m_name("")
-{
-    m_cnf = std::make_shared<CNF>(std::move(CNF::get_cnf(f->cnf())));
-    m_vars = f->get_atoms();
-    m_num_clauses = m_cnf->size();
-}
 
 SAT SAT::from_dimacs(const std::string& filename)
 {

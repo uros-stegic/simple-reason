@@ -31,37 +31,3 @@ Formula And::substitute(const Formula& from, const Formula& to) const
     }
     return to;
 }
-
-Formula And::simplify() const
-{
-    Formula left  = get_left_operand() ->simplify();
-    Formula right = get_right_operand()->simplify();
-
-    if( left->get_type() == PROP_FALSE || right->get_type() == PROP_FALSE) {
-        return std::make_shared<False>();
-    }
-    else if( left->get_type() == PROP_TRUE ) {
-        return right;
-    }
-    else if( right->get_type() == PROP_TRUE ) {
-        return left;
-    }
-    return std::make_shared<And>(left, right);
-}
-
-Formula And::m_nnf() const
-{
-    return std::make_shared<And>(
-             get_left_operand() ->nnf(),
-             get_right_operand()->nnf()
-    );
-}
-
-Formula And::m_cnf() const
-{
-    return std::make_shared<And>(
-             get_left_operand() ->cnf(),
-             get_right_operand()->cnf()
-    );
-}
-

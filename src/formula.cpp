@@ -1,4 +1,5 @@
 #include <formula.hpp>
+#include <transformation.hpp>
 
 using namespace AR;
 
@@ -8,6 +9,11 @@ bool BaseFormula::equals(const Formula& f) const
         return false;
     }
     return m_is_equal(f);
+}
+
+Formula BaseFormula::copy() const
+{
+    return shared_from_this();
 }
 
 AtomSet BaseFormula::get_atoms() const
@@ -57,14 +63,9 @@ bool BaseFormula::is_deniable() const
     return !is_tautology();
 }
 
-Formula BaseFormula::nnf() const
+Formula BaseFormula::transform(const Transformation &t) const
 {
-    return simplify()->m_nnf();
-}
-
-Formula BaseFormula::cnf() const
-{
-    return nnf()->m_cnf();
+    return t.transform(shared_from_this());
 }
 
 std::ostream& operator <<(std::ostream& out, const Formula& f)

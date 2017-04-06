@@ -40,9 +40,3 @@ void UnaryFormula::print_formula(std::ostream& out) const
         out << ")";
     }
 }
-
-Formula UnaryFormula::m_cnf() const
-{
-    return shared_from_this();
-}
-

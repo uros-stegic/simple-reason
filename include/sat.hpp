@@ -14,7 +14,6 @@ namespace AR {
 class SAT {
 public:
     SAT();
-    SAT(const Formula&);
     SAT static from_dimacs(const std::string&);
     void to_dimacs(const std::string&) const;
     explicit operator Formula() const;

@@ -1,5 +1,7 @@
 #include <iostream>
 #include <formulae.hpp>
+#include <naive_cnf.hpp>
+#include <elimination.hpp>
 
 using namespace AR;
 
@@ -17,20 +19,25 @@ int main(int argc, char **argv) {
     Formula _r = std::make_shared<Not>(r);
     Formula _s = std::make_shared<Not>(s);
 
-    Formula pq = std::make_shared<If>(p, q);
-    Formula _r_q = std::make_shared<If>(_r, _s);
+    Formula pq = std::make_shared<And>(q,r);
+    Formula pOq = std::make_shared<Or>(q,r);
+    Formula ptq = std::make_shared<If>(p,q);
+    Formula peq = std::make_shared<Iff>(std::make_shared<Not>(ptq),pOq);
 
-    Formula f1 = std::make_shared<Iff>(pq, _r_q);
+    Formula __p = std::make_shared<Not>(_p);
 
-    Formula ss = std::make_shared<And>(p, q);
-    Formula f2 = std::make_shared<Iff>(r, ss);
-    Formula f = std::make_shared<Not>(f2);
 
-    Formula g = f->cnf();
-    SAT instance(g);
+    Formula t1 = std::make_shared<Or>(pq, pOq);
 
-    std::cout << f << std::endl;
-    std::cout << g << std::endl;
-    std::cout << instance << std::endl;
+    Transformation* neg_dist = new NaiveCNF();
+
+    std::cout << peq << "\t--->  " << peq->transform(*neg_dist) << std::endl;
+//              << t2 << "\t--->  " << t2->transform(*neg_dist) << std::endl
+//              << t3 << "\t--->  " << t3->transform(*neg_dist) << std::endl
+//              << t4 << "\t--->  " << t4->transform(*neg_dist) << std::endl;
+
+    delete neg_dist;
+
+    return 0;
 }
 
