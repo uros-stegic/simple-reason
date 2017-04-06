@@ -7,9 +7,5 @@
 #include <disjunction.hpp>
 #include <implication.hpp>
 #include <equivalence.hpp>
-#include <valuation.hpp>
 #include <definitions.hpp>
-#include <clause.hpp>
-#include <cnf.hpp>
-#include <sat.hpp>
 

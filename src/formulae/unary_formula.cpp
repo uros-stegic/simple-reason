@@ -1,5 +1,7 @@
 #include <unary_formula.hpp>
 
+#include <iostream>
+
 using namespace AR;
 
 UnaryFormula::UnaryFormula(const Formula &f)

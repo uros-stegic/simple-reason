@@ -1,6 +1,5 @@
 #include <conjunction.hpp>
 #include <valuation.hpp>
-#include <false_constant.hpp>
 
 #include <iostream>
 

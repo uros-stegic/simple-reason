@@ -1,5 +1,8 @@
 #include <formula.hpp>
 #include <transformation.hpp>
+#include <definitions.hpp>
+
+#include <iostream>
 
 using namespace AR;
 

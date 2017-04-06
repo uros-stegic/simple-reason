@@ -1,8 +1,7 @@
 #include <disjunction.hpp>
 #include <valuation.hpp>
-#include <conjunction.hpp>
-#include <true_constant.hpp>
-#include <false_constant.hpp>
+
+#include <iostream>
 
 using namespace AR;
 

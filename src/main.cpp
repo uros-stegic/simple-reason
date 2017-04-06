@@ -1,7 +1,6 @@
 #include <iostream>
 #include <formulae.hpp>
-#include <naive_cnf.hpp>
-#include <elimination.hpp>
+#include <transformations.hpp>
 
 using namespace AR;
 

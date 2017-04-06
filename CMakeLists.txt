@@ -10,15 +10,22 @@ configure_file (
 )
 
 set(TARGET simple-reason)
-set(HEADERS ${PROJECT_SOURCE_DIR}/include)
-set(SOURCES ${PROJECT_SOURCE_DIR}/src)
 
 include_directories(${HEADERS})
+include_directories(${PROJECT_SOURCE_DIR}/include/formulae)
+include_directories(${PROJECT_SOURCE_DIR}/include/transformations)
+include_directories(${PROJECT_SOURCE_DIR}/include/semantics)
 include_directories(${PROJECT_BINARY_DIR})
 
 file(GLOB RESOURCES
-    ${SOURCES}/*.cpp
-    ${HEADERS}/*.hpp
+    ${PROJECT_SOURCE_DIR}/src/*.cpp
+    ${PROJECT_SOURCE_DIR}/src/formulae/*.cpp
+    ${PROJECT_SOURCE_DIR}/src/transformations/*.cpp
+    ${PROJECT_SOURCE_DIR}/src/semantics/*.cpp
+
+    ${PROJECT_SOURCE_DIR}/include/formulae/*.hpp
+    ${PROJECT_SOURCE_DIR}/include/transformations/*.hpp
+    ${PROJECT_SOURCE_DIR}/include/semantics/*.hpp
 )
 
 add_executable(${TARGET}

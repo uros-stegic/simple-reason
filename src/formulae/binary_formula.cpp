@@ -1,5 +1,7 @@
 #include <binary_formula.hpp>
 
+#include <iostream>
+
 using namespace AR;
 
 BinaryFormula::BinaryFormula(const Formula &f, const Formula &g)

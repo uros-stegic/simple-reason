@@ -1,12 +1,7 @@
-#include <letter.hpp>
-#include <true_constant.hpp>
-#include <false_constant.hpp>
 #include <negation.hpp>
-#include <conjunction.hpp>
-#include <disjunction.hpp>
-#include <implication.hpp>
-#include <equivalence.hpp>
-#include <memory>
+#include <valuation.hpp>
+
+#include <iostream>
 
 using namespace AR;
 

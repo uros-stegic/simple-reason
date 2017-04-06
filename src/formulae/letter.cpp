@@ -1,4 +1,7 @@
 #include <letter.hpp>
+#include <valuation.hpp>
+
+#include <iostream>
 
 using namespace AR;
 

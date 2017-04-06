@@ -1,8 +1,7 @@
-#include <valuation.hpp>
-#include <true_constant.hpp>
-#include <negation.hpp>
-#include <disjunction.hpp>
 #include <implication.hpp>
+#include <valuation.hpp>
+
+#include <iostream>
 
 using namespace AR;
 
