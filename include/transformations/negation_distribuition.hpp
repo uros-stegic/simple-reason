@@ -2,7 +2,6 @@
 #define NEGATION_DISTRIBUTION_HPP
 
 #include <transformation.hpp>
-#include <definitions.hpp>
 
 namespace AR {
 /**

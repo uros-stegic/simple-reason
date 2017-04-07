@@ -2,7 +2,6 @@
 #define SIMPLIFICATION_HPP
 
 #include <transformation.hpp>
-#include <definitions.hpp>
 
 namespace AR {
 /**

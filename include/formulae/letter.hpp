@@ -4,7 +4,6 @@
 #include <iostream>
 
 #include <atomic.hpp>
-#include <definitions.hpp>
 #include <formula.hpp>
 #include <valuation.hpp>
 

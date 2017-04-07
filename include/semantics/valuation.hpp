@@ -3,8 +3,7 @@
 
 #include <map>
 #include <iostream>
-
-#include <definitions.hpp>
+#include <formula.hpp>
 
 namespace AR {
 class Valuation {

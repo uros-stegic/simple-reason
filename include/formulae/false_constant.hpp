@@ -5,7 +5,6 @@
 
 #include <constant.hpp>
 #include <formula.hpp>
-#include <definitions.hpp>
 #include <valuation.hpp>
 
 namespace AR {

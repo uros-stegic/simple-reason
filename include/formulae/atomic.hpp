@@ -1,7 +1,6 @@
 #ifndef ATOMIC_HPP
 #define ATOMIC_HPP
 
-#include <definitions.hpp>
 #include <formula.hpp>
 
 namespace AR {

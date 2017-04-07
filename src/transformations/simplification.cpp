@@ -1,5 +1,4 @@
 #include <simplification.hpp>
-#include <formula.hpp>
 #include <formulae.hpp>
 #include <memory>
 

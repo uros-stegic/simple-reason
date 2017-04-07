@@ -4,7 +4,6 @@
 #include <iostream>
 
 #include <constant.hpp>
-#include <definitions.hpp>
 #include <valuation.hpp>
 #include <formula.hpp>
 

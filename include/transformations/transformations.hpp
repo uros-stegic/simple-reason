@@ -6,4 +6,3 @@
 #include <negation_distribuition.hpp>
 #include <nnf.hpp>
 #include <simplification.hpp>
-

@@ -1,7 +1,6 @@
 #ifndef CONSTANT_HPP
 #define CONSTANT_HPP
 
-#include <definitions.hpp>
 #include <atomic.hpp>
 
 namespace AR {

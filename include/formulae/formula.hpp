@@ -2,9 +2,8 @@
 #define FORMULA_HPP
 
 #include <iostream>
-
-#include <definitions.hpp>
-#include <valuation.hpp>
+#include <set>
+#include <memory>
 
 namespace AR {
 enum FormulaType {
@@ -18,7 +17,12 @@ enum FormulaType {
     EQUIVALENCE
 };
 
+class BaseFormula;
 class Transformation;
+class Valuation;
+
+typedef std::shared_ptr<const BaseFormula> Formula;
+typedef std::set<unsigned int> AtomSet;
 
 class BaseFormula : public std::enable_shared_from_this<BaseFormula> {
 public:

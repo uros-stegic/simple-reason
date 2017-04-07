@@ -4,7 +4,6 @@
 #include <iostream>
 
 #include <formula.hpp>
-#include <definitions.hpp>
 
 namespace AR {
 class UnaryFormula : public BaseFormula {

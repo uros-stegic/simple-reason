@@ -3,7 +3,6 @@
 
 #include <iostream>
 
-#include <definitions.hpp>
 #include <binary_formula.hpp>
 #include <valuation.hpp>
 #include <formula.hpp>

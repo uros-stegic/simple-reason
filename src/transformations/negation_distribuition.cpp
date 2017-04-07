@@ -1,5 +1,4 @@
 #include <negation_distribuition.hpp>
-#include <formula.hpp>
 #include <formulae.hpp>
 
 using namespace AR;

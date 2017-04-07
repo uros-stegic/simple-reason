@@ -5,7 +5,6 @@
 
 #include <unary_formula.hpp>
 #include <formula.hpp>
-#include <definitions.hpp>
 #include <valuation.hpp>
 
 namespace AR {
