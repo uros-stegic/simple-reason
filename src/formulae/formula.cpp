@@ -29,43 +29,6 @@ AtomSet BaseFormula::get_atoms() const
 void BaseFormula::m_get_atoms(AtomSet&) const
 {}
 
-bool BaseFormula::is_satisfiable() const
-{
-    AtomSet atoms = get_atoms();
-    Valuation val(atoms);
-
-    do {
-        if( evaluate(val) ) {
-            return true;
-        }
-    }
-    while( val.next() );
-
-    return false;
-}
-bool BaseFormula::is_tautology() const
-{
-    AtomSet atoms = get_atoms();
-    Valuation val(atoms);
-
-    do {
-        if( !evaluate(val) ) {
-            return false;
-        }
-    }
-    while( val.next() );
-
-    return true;
-}
-bool BaseFormula::is_contradiction() const
-{
-    return !is_satisfiable();
-}
-bool BaseFormula::is_deniable() const
-{
-    return !is_tautology();
-}
-
 Formula BaseFormula::transform(const Transformation &t) const
 {
     return t.transform(shared_from_this());

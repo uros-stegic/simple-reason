@@ -31,11 +31,6 @@ public:
     virtual AtomSet get_atoms() const;
     virtual bool evaluate(const Valuation&) const = 0;
 
-    bool is_satisfiable() const;
-    bool is_tautology() const;
-    bool is_contradiction() const;
-    bool is_deniable() const;
-
     Formula transform(const Transformation&) const;
     virtual Formula substitute(const Formula&, const Formula&) const = 0;
     
