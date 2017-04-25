@@ -25,7 +25,6 @@ int main(int argc, char **argv) {
     Formula _r = std::make_shared<Not>(r);
     Formula _s = std::make_shared<Not>(s);
 
-    /*
     Formula r1  = std::make_shared<If>(p,q);
     Formula r2  = std::make_shared<And>(_r,s);
     Formula r3  = std::make_shared<And>(p,_q);
@@ -40,16 +39,6 @@ int main(int argc, char **argv) {
     //(((p⇒q)∨(¬r∧s))∧(s⇒((p∧¬q)∨r))⇒(p⇒q))⇒((¬r∧s)⇒(p⇒q))
     Formula f = std::make_shared<If>(r9,r4);
     std::cout << f << std::endl;
-    */
-
-    Formula c1 = std::make_shared<Clause>(std::initializer_list<Formula>{_p, q, _s}); // (p2 | ~p1 | ~p4)
-    Formula c2 = std::make_shared<Clause>(std::initializer_list<Formula>{p, _q, _s}); // (p1 | ~p2 | ~p4)
-    Formula c3 = std::make_shared<Clause>(std::initializer_list<Formula>{r, _q, s});  // (p3 | p4 | ~p2)
-
-    Formula cnf = std::make_shared<CNF>(std::initializer_list<Formula>{c1, c2, c3});
-    std::cout << cnf << std::endl;
-//    Formula cnf1 = static_cast<const CNF*>(cnf.get())->add_clause(c4);
-//    std::cout << cnf1 << std::endl;
 
     return 0;
 }

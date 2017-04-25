@@ -14,9 +14,7 @@ enum FormulaType {
     CONJUNCTION,
     DISJUNCTION,
     IMPLICATION,
-    EQUIVALENCE,
-    CNF_FORM,
-    CNF_CLAUSE
+    EQUIVALENCE
 };
 
 class BaseFormula;
