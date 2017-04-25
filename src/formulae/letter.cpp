@@ -38,3 +38,8 @@ bool Var::evaluate(const Valuation& val) const
     return val.get_value(m_id);
 }
 
+bool Var::operator <(const Formula& f) const
+{
+    const Var *v = static_cast<const Var*>(f.get());
+    return m_id < v->m_id;
+}

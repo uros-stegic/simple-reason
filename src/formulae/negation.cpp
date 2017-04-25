@@ -20,6 +20,11 @@ bool Not::evaluate(const Valuation& val) const
     return !get_operand()->evaluate(val);
 }
 
+bool Not::is_literal() const
+{
+    return get_operand()->is_literal() && get_operand()->get_type() != NEGATION;
+}
+
 Formula Not::substitute(const Formula& from, const Formula& to) const
 {
     if( get_type() != from->get_type() || !equals(from) ) {

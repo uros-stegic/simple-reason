@@ -6,8 +6,9 @@
 namespace AR {
 class AtomicFormula : public BaseFormula {
 public:
-    virtual int complexity() const;
-    virtual Formula substitute(const Formula&, const Formula&) const;
+    virtual bool is_literal() const override;
+    virtual int complexity() const override;
+    virtual Formula substitute(const Formula&, const Formula&) const override;
 };
 }
 

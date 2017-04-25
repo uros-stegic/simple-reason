@@ -12,13 +12,13 @@ class If : public BinaryFormula {
 public:
     using BinaryFormula::BinaryFormula;
 
-    virtual FormulaType get_type() const;
-    virtual bool evaluate(const Valuation&) const;
+    virtual FormulaType get_type() const override;
+    virtual bool evaluate(const Valuation&) const override;
 
-    virtual Formula substitute(const Formula&, const Formula&) const;
+    virtual Formula substitute(const Formula&, const Formula&) const override;
 
 protected:
-    virtual void m_print_formula(std::ostream&) const;
+    virtual void m_print_formula(std::ostream&) const override;
 };
 }
 

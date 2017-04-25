@@ -14,7 +14,9 @@ enum FormulaType {
     CONJUNCTION,
     DISJUNCTION,
     IMPLICATION,
-    EQUIVALENCE
+    EQUIVALENCE,
+    CNF_FORM,
+    CNF_CLAUSE
 };
 
 class BaseFormula;
@@ -23,6 +25,10 @@ class Valuation;
 
 typedef std::shared_ptr<const BaseFormula> Formula;
 typedef std::set<unsigned int> AtomSet;
+
+struct FormulaCompare {
+    bool operator()(const Formula&, const Formula&) const;
+};
 
 class BaseFormula : public std::enable_shared_from_this<BaseFormula> {
 public:
@@ -34,6 +40,13 @@ public:
 
     virtual AtomSet get_atoms() const;
     virtual bool evaluate(const Valuation&) const = 0;
+    virtual bool is_literal() const = 0;
+    virtual bool operator <(const Formula&) const = 0;
+    bool operator !=(const Formula&) const;
+    bool operator ==(const Formula&) const;
+    bool operator >(const Formula&) const;
+    bool operator <=(const Formula&) const;
+    bool operator >=(const Formula&) const;
 
     Formula transform(const Transformation&) const;
     virtual Formula substitute(const Formula&, const Formula&) const = 0;
@@ -44,6 +57,12 @@ protected:
 };
 }
 std::ostream& operator <<(std::ostream& out, const AR::Formula& f);
+bool operator<(const AR::Formula&, const AR::Formula&);
+bool operator !=(const AR::Formula&, const AR::Formula&);
+bool operator ==(const AR::Formula&, const AR::Formula&);
+bool operator >(const AR::Formula&, const AR::Formula&);
+bool operator <=(const AR::Formula&, const AR::Formula&);
+bool operator >=(const AR::Formula&, const AR::Formula&);
 
 #endif // FORMULA_HPP
 

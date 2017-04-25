@@ -6,7 +6,8 @@
 namespace AR {
 class Constant : public AtomicFormula {
 protected:
-    bool m_is_equal(const Formula&) const;
+    bool operator <(const Formula&) const override;
+    bool m_is_equal(const Formula&) const override;
 };
 }
 

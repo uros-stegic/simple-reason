@@ -1,17 +1,24 @@
-#include <formula.hpp>
+#include <formulae.hpp>
 #include <transformation.hpp>
-//#include <definitions.hpp>
 
 #include <iostream>
 
 using namespace AR;
 
+bool FormulaCompare::operator()(const Formula& f, const Formula& g) const
+{
+    return f < g;
+}
+
 bool BaseFormula::equals(const Formula& f) const
 {
+    /*
     if( get_type() != f->get_type() ) {
         return false;
     }
     return m_is_equal(f);
+    */
+    return !(shared_from_this() < f || f < shared_from_this());
 }
 
 Formula BaseFormula::copy() const
@@ -40,3 +47,43 @@ std::ostream& operator <<(std::ostream& out, const Formula& f)
     return out;
 }
 
+bool operator<(const Formula& f, const Formula& g)
+{
+    if( f->complexity() < g->complexity() ) {
+        return true;
+    }
+    else if( f->complexity() > g->complexity() ) {
+        return false;
+    }
+    else {
+        if( f->get_type() < g->get_type() ) {
+            return true;
+        }
+        else if( f->get_type() < g->get_type() ) {
+            return true;
+        }
+        else {
+            return *f < g;
+        }
+    }
+    /*
+    return f->complexity() <= g->complexity() &&
+           f->get_type() <= g->get_type() &&
+           *f < g;
+    */
+}
+bool operator !=(const Formula& f, const Formula& g) {
+    return f < g || g < f;
+}
+bool operator ==(const Formula& f, const Formula& g) {
+    return !(f < g || g < f);
+}
+bool operator >(const Formula& f, const Formula& g) {
+    return !(f < g) && (g < f);
+}
+bool operator <=(const Formula& f, const Formula& g) {
+    return f < g || !(g < f);
+}
+bool operator >=(const Formula& f, const Formula& g) {
+    return !(f < g);
+}

@@ -10,9 +10,9 @@
 namespace AR {
 class False : public Constant {
 public:
-    virtual FormulaType get_type() const;
-    virtual void print_formula(std::ostream&) const;
-    virtual bool evaluate(const Valuation&) const;
+    virtual FormulaType get_type() const override;
+    virtual void print_formula(std::ostream&) const override;
+    virtual bool evaluate(const Valuation&) const override;
 };
 }
 

@@ -2,6 +2,11 @@
 
 using namespace AR;
 
+bool AtomicFormula::is_literal() const
+{
+    return true;
+}
+
 int AtomicFormula::complexity() const
 {
     return 0;

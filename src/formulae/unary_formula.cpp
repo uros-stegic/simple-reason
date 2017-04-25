@@ -17,6 +17,12 @@ int UnaryFormula::complexity() const
     return 1 + m_operand->complexity();
 }
 
+bool UnaryFormula::operator <(const Formula& f) const
+{
+    const UnaryFormula *fu = static_cast<const UnaryFormula*>(f.get());
+    return m_operand < fu->m_operand;
+}
+
 bool UnaryFormula::m_is_equal(const Formula& f) const
 {
     return m_operand->equals(((UnaryFormula*)f.get())->get_operand());

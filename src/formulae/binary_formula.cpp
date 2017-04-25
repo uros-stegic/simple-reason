@@ -17,9 +17,21 @@ Formula BinaryFormula::get_right_operand() const
     return m_right_operand;
 }
 
+bool BinaryFormula::is_literal() const
+{
+    return false;
+}
+
 int BinaryFormula::complexity() const
 {
     return 1 + m_left_operand->complexity() + m_right_operand->complexity();
+}
+
+bool BinaryFormula::operator <(const Formula& f) const
+{
+    const BinaryFormula* fb = static_cast<const BinaryFormula*>(f.get());
+    return m_left_operand  < fb->m_left_operand ||
+           m_right_operand < fb->m_right_operand;
 }
 
 bool BinaryFormula::m_is_equal(const Formula& f) const

@@ -10,14 +10,15 @@ class UnaryFormula : public BaseFormula {
 public:
     UnaryFormula(const Formula&);
 
-    virtual void print_formula(std::ostream&) const;
+    virtual void print_formula(std::ostream&) const override;
+    virtual int complexity() const override;
+    virtual bool operator <(const Formula&) const override;
+
     Formula get_operand() const;
 
-    virtual int complexity() const;
-
 protected:
-    bool m_is_equal(const Formula&) const;
-    virtual void m_get_atoms(AtomSet& atoms) const;
+    bool m_is_equal(const Formula&) const override;
+    virtual void m_get_atoms(AtomSet& atoms) const override;
     virtual void m_print_formula(std::ostream&) const = 0;
 
 private:
