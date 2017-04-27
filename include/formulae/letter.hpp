@@ -13,6 +13,7 @@
  * QUESTIONS:
  * 1. Again, the namespace AR. // the reason this question is repeated here is because this is in
  *  formulae folder and not in semantics
+ *  Not sure what the question is. As I see, I'll find it again in other classes.
  * 2.
  *
  * COMMENT: Not sure from where to begin with reading these files, so I am doing it quite randomly.

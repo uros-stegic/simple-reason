@@ -35,10 +35,33 @@ struct FormulaCompare {
     We enable shared from this...
     QUESTIONS:
     1. What should I explain from here? Each class will be explained in classes lower in hierarchy.
+		Folder include/formulae contains nodes of Abstract Syntax Tree. AST is data structure that
+		we need in order to keep syntactical constructs in memory. It is implemented as a (binary)
+		tree. This AST contains nodes (objects) of the formula. BaseFormula class is the abstraction
+		of all possible nodes. It contains a pattern that must be filled in order for some class
+		can be called node of this tree (this pattern is described by `pure virtual` methods).
+		See: https://en.wikipedia.org/wiki/Abstract_syntax_tree
     2. How to properly explain shared from this?
+		Shared pointers wrap around regular pointers. They are awesome as long as no one messes with
+		the undelying regular pointers that they wrapped. If someone break those pointers, then
+		the shared pointer will be broken as well. When we do `return this` it will return regular
+		pointer, since `this` is a regular pointer. This is not what we want, we want to return shared
+		pointer, not the regular one. If we use make_shared on `this` then new pointer will be created.
+		We then use shared_from_this() method that will wrap `this` pointer in a good way. In order
+		to have that method in our class, we need to extend the class enable_shared_from_this.
     3. What is the difference between const = 0 and const?
+		const means that this method will not modify object which it's called from in any way. `= 0`
+		is explained in include/formulae/atomic.hpp. `const` and `=0` are independent of each other
+		which means all of these are valid:
+			virtual void f();
+			virtual void f() const;
+			virtual void f() const = 0;
+			virtual void f() = 0;
+			void f()
+			void f() const;
 
     COMMENT: This part we should pass together again :(
+	So true. :)
 */
 
 class BaseFormula : public std::enable_shared_from_this<BaseFormula> {
