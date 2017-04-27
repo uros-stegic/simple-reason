@@ -7,6 +7,18 @@
 #include <valuation.hpp>
 #include <formula.hpp>
 
+/**
+ *This class provides us with T (always true), with following methods:
+ *      virtual FormulaType get_type() const override;
+ *  This method returns enum type provided in formula.hpp PROP_TRUE.
+        virtual void print_formula(std::ostream&) const override;
+    This method returns 1, because 1 is always true.
+        virtual bool evaluate(const Valuation&) const override;
+    Evaluation of something that is always true is obviously true.
+
+ *
+ */
+
 namespace AR {
 class True : public Constant {
 public:

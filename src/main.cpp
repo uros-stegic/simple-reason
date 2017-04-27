@@ -40,6 +40,20 @@ int main(int argc, char **argv) {
     Formula f = std::make_shared<If>(r9,r4);
     std::cout << f << std::endl;
 
+    Formula pp = std::make_shared<Not>(r2);
+    std::cout << pp << std::endl;
+
+    Transformation *tr1 = new NegationDistribution();
+    Transformation *rt2 = new Simplification();
+
+    Formula res = pp->transform(*tr1);
+
+
+    std::cout << res->transform(*rt2) << std::endl;
+
+    delete tr1;
+    delete rt2;
+
     return 0;
 }
 

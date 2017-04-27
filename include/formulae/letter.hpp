@@ -7,6 +7,22 @@
 #include <formula.hpp>
 #include <valuation.hpp>
 
+/**
+ *
+ *
+ * QUESTIONS:
+ * 1. Again, the namespace AR. // the reason this question is repeated here is because this is in
+ *  formulae folder and not in semantics
+ * 2.
+ *
+ * COMMENT: Not sure from where to begin with reading these files, so I am doing it quite randomly.
+ *  Some of the answers to my questions will come as I get more into this code. The answers I consider
+ * true will be provided after a right arrow "---> ", they should be checked twice! Fool me once shame
+ * on you, fool me twice shame on me! :)
+ *
+ *
+ */
+
 namespace AR {
 class Var : public AtomicFormula {
 public:

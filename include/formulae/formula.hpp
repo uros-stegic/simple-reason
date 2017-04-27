@@ -28,6 +28,19 @@ struct FormulaCompare {
     bool operator()(const Formula&, const Formula&) const;
 };
 
+/**
+ * @brief The BaseFormula class
+ * This class provides us basic methods for working with formulas. This class is at the top of
+ *  formulas hierarchy. All methods here are abstract, we cannot instantiate a BaseFormula object.
+    We enable shared from this...
+    QUESTIONS:
+    1. What should I explain from here? Each class will be explained in classes lower in hierarchy.
+    2. How to properly explain shared from this?
+    3. What is the difference between const = 0 and const?
+
+    COMMENT: This part we should pass together again :(
+*/
+
 class BaseFormula : public std::enable_shared_from_this<BaseFormula> {
 public:
     virtual FormulaType get_type() const = 0;
@@ -55,7 +68,7 @@ protected:
 };
 }
 std::ostream& operator <<(std::ostream& out, const AR::Formula& f);
-bool operator<(const AR::Formula&, const AR::Formula&);
+bool operator <(const AR::Formula&, const AR::Formula&);
 bool operator !=(const AR::Formula&, const AR::Formula&);
 bool operator ==(const AR::Formula&, const AR::Formula&);
 bool operator >(const AR::Formula&, const AR::Formula&);

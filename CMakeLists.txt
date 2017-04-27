@@ -11,6 +11,10 @@ configure_file (
     "${PROJECT_BINARY_DIR}/config.h"
 )
 
+add_definitions(-std=c++11)
+INCLUDE(CMakeForceCompiler)
+CMAKE_FORCE_CXX_COMPILER(g++ GNU)
+
 set(TARGET simple-reason)
 
 include_directories(${HEADERS})
