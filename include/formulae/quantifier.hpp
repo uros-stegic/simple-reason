@@ -1,6 +1,3 @@
-/* Quantifier која наслеђује класу Unarni operator и
-садржи сопствен назив (std::string) и
-подформулу (Formula);*/
 #ifndef QUANTIFIER_HPP
 #define QUANTIFIER_HPP
 
@@ -14,11 +11,11 @@ class Quantifier : public UnaryFormula {
 public:
     Quantifier(const Formula&, std::string);
     virtual std::string var_name() const;
-    virtual bool is_literal() const;
+    virtual bool is_literal() const override;
 
 private:
     std::string m_var_name;
 };
 }
 
-#endif
+#endif //QUANTIFIER_HPP

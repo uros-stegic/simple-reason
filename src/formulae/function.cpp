@@ -52,5 +52,5 @@ int Function::complexity() const
 
 bool Function::m_is_equal(const Term&) const
 {
-
+    return false;
 }

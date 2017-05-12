@@ -18,6 +18,7 @@ void Predicate::print_formula(std::ostream & out) const
 {
     out << m_name;
     out << "(";
+
     (*std::begin(m_terms))->print_term(out);
 
     std::for_each(
@@ -28,6 +29,7 @@ void Predicate::print_formula(std::ostream & out) const
             term->print_term(out);
         }
     );
+
     out << ")";
 }
 

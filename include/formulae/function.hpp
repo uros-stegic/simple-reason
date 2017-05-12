@@ -11,14 +11,13 @@ namespace AR{
 class Function : public BaseTerm{
 public:
     Function(std::string, const std::vector<Term> &);
-    virtual void print_term(std::ostream &) const;
     virtual std::string name() const;
-
-    virtual TermType get_type() const;
-    virtual int complexity() const;
+    virtual void print_term(std::ostream &) const override;
+    virtual TermType get_type() const override;
+    virtual int complexity() const override;
 
 protected:
-    bool m_is_equal(const Term&) const;
+    bool m_is_equal(const Term&) const override;
 
 private:
     std::string m_name;
@@ -26,4 +25,4 @@ private:
 };
 }
 
-#endif
+#endif //FUNCTION_HPP

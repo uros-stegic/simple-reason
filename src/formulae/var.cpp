@@ -5,7 +5,8 @@
 using namespace AR;
 
 Var::Var(std::string n)
-    : m_name(n) {}
+    : m_name(n)
+{}
 
 void Var::print_term(std::ostream & out) const
 {

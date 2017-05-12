@@ -9,14 +9,15 @@ namespace AR{
 class ForAll : public Quantifier {
 public:
     using Quantifier::Quantifier;
+
     virtual FormulaType get_type() const;
 
 protected:
-    virtual void m_print_formula(std::ostream&) const;
-    virtual bool evaluate(const Valuation&) const;
-    virtual Formula substitute(const Formula&, const Formula&) const;
+    virtual void m_print_formula(std::ostream&) const override;
+    virtual bool evaluate(const Valuation&) const override;
+    virtual Formula substitute(const Formula&, const Formula&) const override;
 
 };
 }
 
-#endif
+#endif //FOR_ALL_HPP

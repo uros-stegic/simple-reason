@@ -9,17 +9,17 @@ namespace AR{
 class Var : public BaseTerm {
 public:
     Var(std::string);
-    virtual void print_term(std::ostream &) const;
     virtual std::string name() const;
-    virtual TermType get_type() const;
-    virtual int complexity() const;
+    virtual void print_term(std::ostream &) const override;
+    virtual TermType get_type() const override;
+    virtual int complexity() const override;
 
 protected:
-     virtual bool m_is_equal(const Term&) const;
+     virtual bool m_is_equal(const Term&) const override;
 
 private:
     std::string m_name;
 };
 }
 
-#endif
+#endif //VAR_HPP

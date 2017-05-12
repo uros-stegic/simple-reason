@@ -35,4 +35,4 @@ protected:
 }
 std::ostream& operator <<(std::ostream& out, const AR::Term& t);
 
-#endif
+#endif //TERM_HPP

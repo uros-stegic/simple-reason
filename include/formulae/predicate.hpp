@@ -12,9 +12,9 @@ namespace AR{
 class Predicate : public AtomicFormula{
 public:
     Predicate(std::string, const std::vector<Term>&);
-    void print_formula(std::ostream & out) const;
     virtual std::string name() const;
-    virtual FormulaType get_type() const;
+    void print_formula(std::ostream & out) const override;
+    virtual FormulaType get_type() const override;
 
 private:
     std::string m_name;
@@ -22,4 +22,4 @@ private:
 };
 }
 
-#endif
+#endif //PREDICATE_HPP
