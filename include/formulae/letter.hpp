@@ -25,9 +25,9 @@
  */
 
 namespace AR {
-class Var : public AtomicFormula {
+class Letter : public AtomicFormula {
 public:
-    Var(unsigned int id);
+    Letter(unsigned int id);
 
     virtual FormulaType get_type() const override;
     virtual void print_formula(std::ostream&) const override;

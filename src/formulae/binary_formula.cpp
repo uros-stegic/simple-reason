@@ -6,7 +6,8 @@ using namespace AR;
 
 BinaryFormula::BinaryFormula(const Formula &f, const Formula &g)
     : m_left_operand(f)
-    , m_right_operand(g) {}
+    , m_right_operand(g)
+{}
 
 Formula BinaryFormula::get_left_operand() const
 {

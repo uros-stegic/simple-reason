@@ -3,12 +3,12 @@
 
 #include <iostream>
 
-#include <constant.hpp>
+#include <logic_constant.hpp>
 #include <formula.hpp>
 #include <valuation.hpp>
 
 namespace AR {
-class False : public Constant {
+class False : public LogicConstant {
 public:
     virtual FormulaType get_type() const override;
     virtual void print_formula(std::ostream&) const override;

@@ -15,10 +15,10 @@ int main(int argc, char **argv) {
     Formula ct = std::make_shared<True>();
     Formula cf = std::make_shared<False>();
 
-    Formula p = std::make_shared<Var>(1);
-    Formula q = std::make_shared<Var>(2);
-    Formula r = std::make_shared<Var>(3);
-    Formula s = std::make_shared<Var>(4);
+    Formula p = std::make_shared<Letter>(1);
+    Formula q = std::make_shared<Letter>(2);
+    Formula r = std::make_shared<Letter>(3);
+    Formula s = std::make_shared<Letter>(4);
     
     Formula _p = std::make_shared<Not>(p);
     Formula _q = std::make_shared<Not>(q);
@@ -53,6 +53,16 @@ int main(int argc, char **argv) {
 
     delete tr1;
     delete rt2;
+
+
+    Formula oo = std::make_shared<ForAll>(p, "x");
+    std::cout << oo << std::endl;
+
+    Term pred = std::make_shared<Constant>("C");
+    std::cout << pred << std::endl;
+
+    Term v = std::make_shared<Var>("x");
+    std::cout << v << std::endl;
 
     return 0;
 }

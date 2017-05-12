@@ -5,7 +5,8 @@
 using namespace AR;
 
 UnaryFormula::UnaryFormula(const Formula &f)
-    : m_operand(f) {}
+    : m_operand(f)
+{}
 
 Formula UnaryFormula::get_operand() const
 {

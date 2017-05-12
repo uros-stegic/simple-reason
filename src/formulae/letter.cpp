@@ -5,41 +5,42 @@
 
 using namespace AR;
 
-Var::Var(unsigned int id)
-    : m_id(id) {}
+Letter::Letter(unsigned int id)
+    : m_id(id)
+{}
 
-FormulaType Var::get_type() const
+FormulaType Letter::get_type() const
 {
     return PROP_LETTER;
 }
 
-unsigned int Var::get_id() const
+unsigned int Letter::get_id() const
 {
     return m_id;
 }
 
-void Var::print_formula(std::ostream& out) const
+void Letter::print_formula(std::ostream& out) const
 {
     out << "p" << m_id;
 }
 
-bool Var::m_is_equal(const Formula& f) const
+bool Letter::m_is_equal(const Formula& f) const
 {
-    return m_id == ((Var*)f.get())->m_id;
+    return m_id == ((Letter*)f.get())->m_id;
 }
 
-void Var::m_get_atoms(AtomSet &atoms) const
+void Letter::m_get_atoms(AtomSet &atoms) const
 {
     atoms.insert(m_id);
 }
 
-bool Var::evaluate(const Valuation& val) const
+bool Letter::evaluate(const Valuation& val) const
 {
     return val.get_value(m_id);
 }
 
-bool Var::operator <(const Formula& f) const
+bool Letter::operator <(const Formula& f) const
 {
-    const Var *v = static_cast<const Var*>(f.get());
+    const Letter *v = static_cast<const Letter*>(f.get());
     return m_id < v->m_id;
 }

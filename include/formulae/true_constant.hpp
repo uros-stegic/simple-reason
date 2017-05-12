@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-#include <constant.hpp>
+#include <logic_constant.hpp>
 #include <valuation.hpp>
 #include <formula.hpp>
 
@@ -20,7 +20,7 @@
  */
 
 namespace AR {
-class True : public Constant {
+class True : public LogicConstant {
 public:
     virtual FormulaType get_type() const override;
     virtual void print_formula(std::ostream&) const override;

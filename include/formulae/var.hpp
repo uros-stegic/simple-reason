@@ -1,21 +1,21 @@
-#ifndef CONSTANT_HPP
-#define CONSTANT_HPP
+#ifndef VAR_HPP
+#define VAR_HPP
 
 #include <iostream>
 #include <string>
 #include <term.hpp>
 
 namespace AR{
-class Constant : public BaseTerm {
+class Var : public BaseTerm {
 public:
-    Constant(std::string);
+    Var(std::string);
     virtual void print_term(std::ostream &) const;
     virtual std::string name() const;
     virtual TermType get_type() const;
     virtual int complexity() const;
 
 protected:
-    virtual bool m_is_equal(const Term&) const;
+     virtual bool m_is_equal(const Term&) const;
 
 private:
     std::string m_name;

@@ -14,7 +14,10 @@ enum FormulaType {
     CONJUNCTION,
     DISJUNCTION,
     IMPLICATION,
-    EQUIVALENCE
+    EQUIVALENCE,
+    PREDICATE,
+    FOR_ALL,
+    EXISTS
 };
 
 class BaseFormula;

@@ -12,7 +12,7 @@ FormulaType Iff::get_type() const
 
 void Iff::m_print_formula(std::ostream& out) const
 {
-    out << " <=> ";
+    out << " ⇔ ";
 }
 
 bool Iff::evaluate(const Valuation& val) const
