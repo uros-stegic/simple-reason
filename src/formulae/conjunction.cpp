@@ -12,7 +12,7 @@ FormulaType And::get_type() const
 
 void And::m_print_formula(std::ostream& out) const
 {
-    out << " & ";
+    out << " Λ ";
 }
 
 bool And::evaluate(const Valuation& val) const

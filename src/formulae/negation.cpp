@@ -12,7 +12,7 @@ FormulaType Not::get_type() const
 
 void Not::m_print_formula(std::ostream& out) const
 {
-    out << "~";
+    out << "¬";
 }
 
 bool Not::evaluate(const Valuation& val) const

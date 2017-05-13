@@ -12,7 +12,7 @@ FormulaType If::get_type() const
 
 void If::m_print_formula(std::ostream& out) const
 {
-    out << " => ";
+    out << " ⇒ ";
 }
 
 bool If::evaluate(const Valuation& val) const

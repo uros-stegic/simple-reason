@@ -12,7 +12,7 @@ FormulaType Or::get_type() const
 
 void Or::m_print_formula(std::ostream& out) const
 {
-    out << " | ";
+    out << " ν ";
 }
 
 bool Or::evaluate(const Valuation& val) const
