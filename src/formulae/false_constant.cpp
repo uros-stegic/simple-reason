@@ -14,8 +14,3 @@ void False::print_formula(std::ostream& out) const
     out << "0";
 }
 
-bool False::evaluate(const Valuation& val) const
-{
-    return false;
-}
-

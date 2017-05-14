@@ -19,7 +19,4 @@ FormulaType Exists::get_type() const
 {
     return EXISTS;
 }
-bool Exists::evaluate(const Valuation&) const
-{
-    return false;
-}
+

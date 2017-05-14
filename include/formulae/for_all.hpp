@@ -14,7 +14,6 @@ public:
 
 protected:
     virtual void m_print_formula(std::ostream&) const override;
-    virtual bool evaluate(const Valuation&) const override;
     virtual Formula substitute(const Formula&, const Formula&) const override;
 
 };

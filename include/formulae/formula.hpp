@@ -76,7 +76,6 @@ public:
     Formula copy() const;
 
     virtual AtomSet get_atoms() const;
-    virtual bool evaluate(const Valuation&) const = 0;
     virtual bool is_literal() const = 0;
     virtual bool operator <(const Formula&) const = 0;
     bool operator !=(const Formula&) const;

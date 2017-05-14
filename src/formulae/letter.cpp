@@ -34,11 +34,6 @@ void Letter::m_get_atoms(AtomSet &atoms) const
     atoms.insert(m_id);
 }
 
-bool Letter::evaluate(const Valuation& val) const
-{
-    return val.get_value(m_id);
-}
-
 bool Letter::operator <(const Formula& f) const
 {
     const Letter *v = static_cast<const Letter*>(f.get());

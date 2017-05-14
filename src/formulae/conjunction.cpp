@@ -15,11 +15,6 @@ void And::m_print_formula(std::ostream& out) const
     out << " Λ ";
 }
 
-bool And::evaluate(const Valuation& val) const
-{
-    return get_left_operand()->evaluate(val) && get_right_operand()->evaluate(val);
-}
-
 Formula And::substitute(const Formula& from, const Formula& to) const
 {
     if( get_type() != from->get_type() || !equals(from) ) {

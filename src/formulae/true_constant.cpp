@@ -14,8 +14,4 @@ void True::print_formula(std::ostream& out) const
     out << "1";
 }
 
-bool True::evaluate(const Valuation& val) const
-{
-    return true;
-}
 

@@ -19,7 +19,4 @@ FormulaType ForAll::get_type() const
 {
     return FOR_ALL;
 }
-bool ForAll::evaluate(const Valuation&) const
-{
-    return false;
-}
+
