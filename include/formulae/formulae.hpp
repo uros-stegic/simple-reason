@@ -12,3 +12,4 @@
 #include <function.hpp>
 #include <var.hpp>
 #include <constant.hpp>
+#include <exists.hpp>
