@@ -11,11 +11,13 @@
 namespace AR{
 class Predicate : public AtomicFormula{
 public:
-    Predicate(std::string, const std::vector<Term>&);
+    Predicate(const std::vector<Term> &, std::string);
     virtual std::string name() const;
     void print_formula(std::ostream & out) const override;
     virtual FormulaType get_type() const override;
-//evaluate obrisati iz cele hijerarhije, operator<, m_is_equal
+    virtual bool operator <(const Formula&) const override;
+    virtual bool m_is_equal(const Formula&) const override;
+
 private:
     std::string m_name;
     std::vector<Term> m_terms;

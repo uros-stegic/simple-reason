@@ -8,9 +8,9 @@
 
 using namespace AR;
 
-Predicate::Predicate(std::string n, const std::vector<Term> &t)
-    : m_name(n)
-    , m_terms(t)
+Predicate::Predicate(const std::vector<Term> &t, std::string n)
+    : m_terms(t)
+    , m_name(n)
 {}
 
 
@@ -43,3 +43,12 @@ FormulaType Predicate::get_type() const
     return PREDICATE;
 }
 
+virtual bool operator <(const Formula& f) const
+{
+
+}
+
+virtual bool m_is_equal(const Formula& other) const
+{
+    return m_name == static_cast<const Predicate*>(other.get())->name();
+}
