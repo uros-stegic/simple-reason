@@ -1,6 +1,6 @@
 #include <atomic.hpp>
 
-using namespace AR;
+using namespace art;
 
 bool AtomicFormula::is_literal() const
 {

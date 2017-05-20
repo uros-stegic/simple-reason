@@ -7,7 +7,7 @@
 #include <formula.hpp>
 #include <valuation.hpp>
 
-namespace AR {
+namespace art {
 class False : public LogicConstant {
 public:
     virtual FormulaType get_type() const override;

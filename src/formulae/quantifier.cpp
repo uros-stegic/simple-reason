@@ -4,16 +4,16 @@
 #include <unary_formula.hpp>
 #include <quantifier.hpp>
 
-using namespace AR;
+using namespace art;
 
-Quantifier::Quantifier(const Formula &f, std::string n)
+Quantifier::Quantifier(const Formula& f, const Term& t)
     : UnaryFormula(f)
-    , m_var_name(n)
+    , m_term(t)
 {}
 
-std::string Quantifier::var_name() const
+Term Quantifier::var() const
 {
-    return m_var_name;
+    return m_term;
 }
 
 bool Quantifier::is_literal() const

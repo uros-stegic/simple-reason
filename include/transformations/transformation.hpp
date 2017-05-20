@@ -3,7 +3,7 @@
 
 #include <formula.hpp>
 
-namespace AR {
+namespace art {
 /**
  * @brief The Transformation class is combination of
  * "Visitor" and "Composite" design patterns from GoF.

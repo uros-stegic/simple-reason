@@ -5,7 +5,7 @@
 #include <numeric>
 #include <function.hpp>
 
-using namespace AR;
+using namespace art;
 
 Function::Function(std::string n, const std::vector<Term> &t)
     : m_name(n)

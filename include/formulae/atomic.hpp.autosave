@@ -33,7 +33,7 @@
  * 		it, so that method remains pure virtual in this class (/wo explicitly writing it). Hence, this class is also abstract.
  */
 
-namespace AR {
+namespace art {
 class AtomicFormula : public BaseFormula {
 public:
     virtual bool is_literal() const override;

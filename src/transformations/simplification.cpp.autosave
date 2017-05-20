@@ -2,7 +2,7 @@
 #include <formulae.hpp>
 #include <memory>
 
-using namespace AR;
+using namespace art;
 
 /*
  * FIXME: refactor this with method extraction.

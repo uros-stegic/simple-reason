@@ -4,7 +4,7 @@
 #include <negation_distribuition.hpp>
 #include <initializer_list>
 
-using namespace AR;
+using namespace art;
 
 NNF::NNF()
     : CompositeTransformation{

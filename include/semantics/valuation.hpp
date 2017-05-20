@@ -49,11 +49,11 @@
  *
  *
  * QUESTIONS:
- * 1. Why namespace AR?
- * 		Why namespace at all, or why AR? It's good practice to use namespace for your project (also, logical parts of a
- * 		project can have (sub)namespaces of their on, i.e. AR::syntax::And, AR::semantics::Valuation) so that you
+ * 1. Why namespace art?
+ * 		Why namespace at all, or why art? It's good practice to use namespace for your project (also, logical parts of a
+ * 		project can have (sub)namespaces of their on, i.e. art::syntax::And, art::semantics::Valuation) so that you
  * 		do not polute the global namespace with the names that you made up. This way, you only polute it with one
- * 		name - AR. Why AR - well, Automated Reasoning (the name of Maric's class :)). This should be refactored
+ * 		name - art. Why art - well, Automated Reasoning (the name of Maric's class :)). This should be refactored
  * 		at some time. First of all, usualy, namspaces are lowercased (like std, boost, ...) and second, why ar, when
  * 		this project is called simple-reason, which means namespace should be called sr.
  * 2. Not sure about whether we are talking about a /\ b /\ c ---> a = 0 b = 1 c = 1 so the valuation
@@ -68,7 +68,7 @@
  * 		he can know that he looped over all the valuation and can jump out of his loop.
  */
 
-namespace AR {
+namespace art {
 class Valuation {
 public:
     Valuation(const AtomSet& atoms);

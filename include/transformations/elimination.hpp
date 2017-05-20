@@ -4,7 +4,7 @@
 #include <transformation.hpp>
 #include <formula.hpp>
 
-namespace AR {
+namespace art {
 /**
  * @brief The Elimination class performs the following:
  * p => q == !p | q

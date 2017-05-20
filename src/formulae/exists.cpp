@@ -2,11 +2,13 @@
 #include <quantifier.hpp>
 #include <exists.hpp>
 
-using namespace AR;
+using namespace art;
 
 void Exists::m_print_formula(std::ostream& out) const
 {
-    out << "∃" << var_name() << ". ";
+    out << "∃";
+    var()->print_term(out);
+    out << ". ";
 
 }
 

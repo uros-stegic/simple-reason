@@ -1,5 +1,5 @@
-#ifndef UNARY_FORMULA_HPP
-#define UNARY_FORMULA_HPP
+#ifndef UNartY_FORMULA_HPP
+#define UNartY_FORMULA_HPP
 
 #include <iostream>
 
@@ -41,7 +41,7 @@
  * 		and what's actually going on, so don't feel bad, you're good. :)
  */
 
-namespace AR {
+namespace art {
 class UnaryFormula : public BaseFormula {
 public:
     UnaryFormula(const Formula&);
@@ -62,5 +62,5 @@ private:
 };
 }
 
-#endif // UNARY_FORMULA_HPP
+#endif // UNartY_FORMULA_HPP
 

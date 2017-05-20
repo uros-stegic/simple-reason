@@ -8,10 +8,10 @@
 #include <term.hpp>
 #include <atomic.hpp>
 
-namespace AR{
+namespace art{
 class Predicate : public AtomicFormula{
 public:
-    Predicate(const std::vector<Term> &, std::string);
+    Predicate(const std::vector<Term>& , std::string);
     virtual std::string name() const;
     void print_formula(std::ostream & out) const override;
     virtual FormulaType get_type() const override;

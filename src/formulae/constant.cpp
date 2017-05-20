@@ -2,7 +2,7 @@
 #include <string>
 #include <constant.hpp>
 
-using namespace AR;
+using namespace art;
 
 Constant::Constant(std::string n)
     : m_name(n)

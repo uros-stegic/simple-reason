@@ -21,7 +21,7 @@
  * virtual Formula substitute(const Formula&, const Formula&) const override;
 */
 
-namespace AR {
+namespace art {
 class If : public BinaryFormula {
 public:
     using BinaryFormula::BinaryFormula;

@@ -19,7 +19,7 @@
  * 		of the previous declarations from above the class hierarchy.
  */
 
-namespace AR {
+namespace art {
 class LogicConstant : public AtomicFormula {
 protected:
     bool operator <(const Formula&) const override;

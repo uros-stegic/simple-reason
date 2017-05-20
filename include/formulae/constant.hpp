@@ -5,7 +5,7 @@
 #include <string>
 #include <term.hpp>
 
-namespace AR{
+namespace art{
 class Constant : public BaseTerm {
 public:
     Constant(std::string);

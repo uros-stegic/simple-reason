@@ -3,7 +3,7 @@
 #include <set>
 #include <term.hpp>
 
-using namespace AR;
+using namespace art;
 
 bool BaseTerm::equals(const Term& other) const
 {
@@ -18,7 +18,7 @@ Term BaseTerm::copy() const
     return shared_from_this();
 }
 
-std::ostream& operator <<(std::ostream& out, const AR::Term& t)
+std::ostream& operator <<(std::ostream& out, const art::Term& t)
 {
     t->print_term(out);
     return out;

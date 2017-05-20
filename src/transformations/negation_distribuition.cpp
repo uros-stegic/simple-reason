@@ -1,7 +1,7 @@
 #include <negation_distribuition.hpp>
 #include <formulae.hpp>
 
-using namespace AR;
+using namespace art;
 
 /*
  * FIXME: Refactor this using method extraction

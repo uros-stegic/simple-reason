@@ -3,7 +3,7 @@
 #include <transformations.hpp>
 #include <iterator>
 
-using namespace AR;
+using namespace art;
 
 struct cmp {
     bool operator()(const Formula& f, const Formula& g) const {
@@ -55,15 +55,27 @@ int main(int argc, char **argv) {
     delete rt2;
 
 
-    Formula oo = std::make_shared<ForAll>(p, "x");
-    std::cout << oo << std::endl;
+    //Formula oo = std::make_shared<ForAll>(p, "x");
+    //std::cout << oo << std::endl;
 
-    Term pred = std::make_shared<Constant>("C");
-    std::cout << pred << std::endl;
+    //Term pred = std::make_shared<Constant>("C");
+    //std::cout << pred << std::endl;
 
-    Term v = std::make_shared<Var>("x");
-    std::cout << v << std::endl;
+    Term x = std::make_shared<Var>("x");
+    std::cout << x << std::endl;
 
+    Term y = std::make_shared<Var>("y");
+    std::cout << y << std::endl;
+
+    Term plusl = std::make_shared<Function>("+", std::vector<Term>{x,y});
+    Term plusr = std::make_shared<Function>("+", std::vector<Term>{x,y});
+
+    Formula eq = std::make_shared<Predicate>(std::vector<Term>{plusl, plusr}, "=");
+
+    Formula fy = std::make_shared<ForAll>(eq, y);
+    Formula fx = std::make_shared<ForAll>(fy, x);
+
+    std::cout << fx << std::endl;
     return 0;
 }
 

@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-using namespace AR;
+using namespace art;
 
 FormulaType And::get_type() const
 {

@@ -1,5 +1,5 @@
-#ifndef BINARY_FORMULA_HPP
-#define BINARY_FORMULA_HPP
+#ifndef BINartY_FORMULA_HPP
+#define BINartY_FORMULA_HPP
 
 #include <iostream>
 
@@ -106,7 +106,7 @@
    		See the above. Ask if it's still not clear. :)
  */
 
-namespace AR {
+namespace art {
 class BinaryFormula : public BaseFormula {
 public:
     BinaryFormula(const Formula&, const Formula&);
@@ -131,5 +131,5 @@ private:
 };
 }
 
-#endif // BINARY_FORMULA_HPP
+#endif // BINartY_FORMULA_HPP
 

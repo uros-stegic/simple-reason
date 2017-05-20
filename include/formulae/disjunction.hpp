@@ -24,7 +24,7 @@
  * 1. SAME AS IN CONJUNCTION
 */
 
-namespace AR {
+namespace art {
 class Or : public BinaryFormula {
 public:
     using BinaryFormula::BinaryFormula;

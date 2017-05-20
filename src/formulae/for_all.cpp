@@ -2,11 +2,13 @@
 #include <quantifier.hpp>
 #include <for_all.hpp>
 
-using namespace AR;
+using namespace art;
 
 void ForAll::m_print_formula(std::ostream& out) const
 {
-    out << "Ɐ" << var_name() << ". ";
+    out << "Ɐ";
+    var()->print_term(out);
+    out << ". ";
 
 }
 

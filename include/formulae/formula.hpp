@@ -5,7 +5,7 @@
 #include <set>
 #include <memory>
 
-namespace AR {
+namespace art {
 enum FormulaType {
     PROP_LETTER,
     PROP_TRUE,
@@ -92,13 +92,13 @@ protected:
     virtual void m_get_atoms(AtomSet&) const;
 };
 }
-std::ostream& operator <<(std::ostream& out, const AR::Formula& f);
-bool operator <(const AR::Formula&, const AR::Formula&);
-bool operator !=(const AR::Formula&, const AR::Formula&);
-bool operator ==(const AR::Formula&, const AR::Formula&);
-bool operator >(const AR::Formula&, const AR::Formula&);
-bool operator <=(const AR::Formula&, const AR::Formula&);
-bool operator >=(const AR::Formula&, const AR::Formula&);
+std::ostream& operator <<(std::ostream& out, const art::Formula& f);
+bool operator <(const art::Formula&, const art::Formula&);
+bool operator !=(const art::Formula&, const art::Formula&);
+bool operator ==(const art::Formula&, const art::Formula&);
+bool operator >(const art::Formula&, const art::Formula&);
+bool operator <=(const art::Formula&, const art::Formula&);
+bool operator >=(const art::Formula&, const art::Formula&);
 
 #endif // FORMULA_HPP
 

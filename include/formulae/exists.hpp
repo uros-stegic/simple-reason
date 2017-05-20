@@ -5,7 +5,7 @@
 #include <string>
 #include <quantifier.hpp>
 
-namespace AR{
+namespace art{
 class Exists : public Quantifier {
 public:
     using Quantifier::Quantifier;

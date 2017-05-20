@@ -7,7 +7,7 @@
 #include <string>
 #include <term.hpp>
 
-namespace AR{
+namespace art{
 class Function : public BaseTerm{
 public:
     Function(std::string, const std::vector<Term> &);

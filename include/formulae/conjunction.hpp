@@ -35,7 +35,7 @@
  *
  */
 
-namespace AR {
+namespace art {
 class And : public BinaryFormula {
 public:
     using BinaryFormula::BinaryFormula;

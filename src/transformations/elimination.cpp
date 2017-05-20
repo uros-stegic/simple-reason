@@ -1,7 +1,7 @@
 #include <elimination.hpp>
 #include <formulae.hpp>
 
-using namespace AR;
+using namespace art;
 
 Formula Elimination::transform(const Formula &f) const
 {

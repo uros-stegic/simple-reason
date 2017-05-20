@@ -1,6 +1,6 @@
 #include <logic_constant.hpp>
 
-using namespace AR;
+using namespace art;
 
 bool LogicConstant::operator <(const Formula&) const
 {

@@ -2,7 +2,7 @@
 #include <conjunction_distribution.hpp>
 #include <stdexcept>
 
-using namespace AR;
+using namespace art;
 
 Formula ConjunctionDistribution::transform(const Formula &f) const
 {

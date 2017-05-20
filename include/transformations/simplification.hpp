@@ -3,7 +3,7 @@
 
 #include <transformation.hpp>
 
-namespace AR {
+namespace art {
 /**
  * @brief The Simplification class performs following laws:
  * !T == F

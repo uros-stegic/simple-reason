@@ -2,7 +2,7 @@
 #include <string>
 #include <var.hpp>
 
-using namespace AR;
+using namespace art;
 
 Var::Var(std::string n)
     : m_name(n)

@@ -6,7 +6,7 @@
 #include <initializer_list>
 
 
-using namespace AR;
+using namespace art;
 
 NaiveCNF::NaiveCNF()
     : CompositeTransformation{

@@ -7,7 +7,7 @@
 #include <memory>
 #include <formula.hpp>
 
-namespace AR {
+namespace art {
 class CompositeTransformation : public Transformation {
 public:
     CompositeTransformation(std::initializer_list<std::shared_ptr<Transformation>>);

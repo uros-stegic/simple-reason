@@ -5,7 +5,7 @@
 #include <memory>
 #include <set>
 
-namespace AR{
+namespace art{
 enum TermType {
     VARIABLE,
     CONSTANT,
@@ -33,6 +33,6 @@ protected:
     virtual bool m_is_equal(const Term&) const = 0;
 };
 }
-std::ostream& operator <<(std::ostream& out, const AR::Term& t);
+std::ostream& operator <<(std::ostream& out, const art::Term& t);
 
 #endif //TERM_HPP

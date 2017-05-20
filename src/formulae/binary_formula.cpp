@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-using namespace AR;
+using namespace art;
 
 BinaryFormula::BinaryFormula(const Formula &f, const Formula &g)
     : m_left_operand(f)

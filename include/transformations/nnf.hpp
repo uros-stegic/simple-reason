@@ -3,7 +3,7 @@
 
 #include <composite_transformation.hpp>
 
-namespace AR {
+namespace art {
 class NNF : public CompositeTransformation {
 public:
     NNF();

@@ -5,16 +5,17 @@
 #include <string>
 #include <memory>
 #include <unary_formula.hpp>
+#include <term.hpp>
 
-namespace AR{
+namespace art{
 class Quantifier : public UnaryFormula {
 public:
-    Quantifier(const Formula&, std::string);
-    virtual std::string var_name() const;
+    Quantifier(const Formula&, const Term&);
+    virtual Term var() const;
     virtual bool is_literal() const override;
 
 private:
-    std::string m_var_name;
+    Term m_term;
 };
 }
 

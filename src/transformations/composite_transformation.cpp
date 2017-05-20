@@ -1,7 +1,7 @@
 #include <composite_transformation.hpp>
 #include <numeric>
 
-using namespace AR;
+using namespace art;
 
 CompositeTransformation::CompositeTransformation(std::initializer_list<std::shared_ptr<Transformation>> list)
     : m_transformations(list)

@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-using namespace AR;
+using namespace art;
 
 Letter::Letter(unsigned int id)
     : m_id(id)

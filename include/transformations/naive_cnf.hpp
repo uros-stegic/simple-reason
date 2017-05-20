@@ -4,7 +4,7 @@
 #include <composite_transformation.hpp>
 #include <formula.hpp>
 
-namespace AR {
+namespace art {
 class NaiveCNF : public CompositeTransformation {
 public:
     NaiveCNF();

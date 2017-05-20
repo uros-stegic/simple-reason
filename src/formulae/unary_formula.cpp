@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-using namespace AR;
+using namespace art;
 
 UnaryFormula::UnaryFormula(const Formula &f)
     : m_operand(f)

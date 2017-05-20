@@ -4,7 +4,7 @@
 #include <transformation.hpp>
 #include <formula.hpp>
 
-namespace AR {
+namespace art {
 class DisjunctionDistribution : public Transformation {
 public:
     virtual Formula transform(const Formula &) const override;

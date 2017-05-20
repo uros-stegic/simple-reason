@@ -3,7 +3,7 @@
 
 #include <transformation.hpp>
 
-namespace AR {
+namespace art {
 /**
  * @brief The NegationDistribution class performs following laws:
  * !(p  &  q) == !p  |  !q

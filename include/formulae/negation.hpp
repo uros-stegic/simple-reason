@@ -12,7 +12,7 @@
  *
  */
 
-namespace AR {
+namespace art {
 class Not : public UnaryFormula {
 public:
     using UnaryFormula::UnaryFormula;

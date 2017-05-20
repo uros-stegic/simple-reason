@@ -2,7 +2,7 @@
 #include <disjunction_distribution.hpp>
 #include <stdexcept>
 
-using namespace AR;
+using namespace art;
 
 Formula DisjunctionDistribution::transform(const Formula &f) const
 {

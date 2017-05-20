@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-using namespace AR;
+using namespace art;
 
 Valuation::Valuation(const AtomSet& atoms)
 {

@@ -19,7 +19,7 @@
  *
  */
 
-namespace AR {
+namespace art {
 class True : public LogicConstant {
 public:
     virtual FormulaType get_type() const override;

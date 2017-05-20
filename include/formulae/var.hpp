@@ -5,7 +5,7 @@
 #include <string>
 #include <term.hpp>
 
-namespace AR{
+namespace art{
 class Var : public BaseTerm {
 public:
     Var(std::string);

@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-using namespace AR;
+using namespace art;
 
 bool FormulaCompare::operator()(const Formula& f, const Formula& g) const
 {

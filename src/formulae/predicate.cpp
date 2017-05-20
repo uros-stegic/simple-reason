@@ -6,7 +6,7 @@
 #include <term.hpp>
 #include <predicate.hpp>
 
-using namespace AR;
+using namespace art;
 
 Predicate::Predicate(const std::vector<Term> &t, std::string n)
     : m_terms(t)
@@ -43,12 +43,12 @@ FormulaType Predicate::get_type() const
     return PREDICATE;
 }
 
-virtual bool operator <(const Formula& f) const
+bool Predicate::operator <(const Formula& f) const
 {
-
+    return false;
 }
 
-virtual bool m_is_equal(const Formula& other) const
+bool Predicate::m_is_equal(const Formula& other) const
 {
     return m_name == static_cast<const Predicate*>(other.get())->name();
 }
