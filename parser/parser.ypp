@@ -2,21 +2,32 @@
 #include <cstdlib>
 #include <string>
 #include <iostream>
+#include <vector>
+#include <formulae.hpp>
 
 #define YYERROR_VERBOSE 1
 
 extern int yylex();
 extern bool interactive;
 
+art::Formula *formula = nullptr;
+
 void yyerror(const std::string& message)
 {
 	std::cerr << "[ERROR]: " << message << std::endl;
+	if( formula != nullptr ) {
+		delete formula;
+	}
+	std::exit(EXIT_FAILURE);
 }
 
 %}
 
 %union {
 	std::string* string;
+	art::Formula* formula;
+	art::Term* term;
+	std::vector<art::Term>* term_list;
 }
 
 %token<string> VAR_TOKEN FUN_TOKEN PRED_TOKEN CONST_TOKEN
@@ -34,53 +45,91 @@ void yyerror(const std::string& message)
 %nonassoc PRED_TOKEN FUN_TOKEN EQUALS_TOKEN NOT_EQUALS_TOKEN
 %nonassoc VAR_TOKEN CONST_TOKEN
 
+
+%type<formula> Formula Atomic Predicate UninterpretedPredicate InterpretedPredicate LogicalConstants 
+%type<term> Term Variable Function Constant
+%type<term_list> Terms TermList
 %%
-Expr		: Formula NEW_LINE	{ if( interactive ) return 0; }
+Expr		: Formula NEW_LINE	{ formula = $1; if( interactive ) return 0; }
 		 	| EXIT_TOKEN		{ std::cout << "Quiting" << std::endl; std::exit(EXIT_SUCCESS); }
+			| NEW_LINE			{}
 			;
 
-Formula		: Formula EQUIV_TOKEN Formula
-			| Formula IMPL_TOKEN Formula
-			| Formula DISJ_TOKEN Formula
-			| Formula CONJ_TOKEN Formula
-			| NEG_TOKEN Formula
-			| UNIV_TOKEN VAR_TOKEN '.' Formula
-			| EXIST_TOKEN VAR_TOKEN '.' Formula
-			| '(' Formula ')'
-			| Atomic
-			|
+Formula		: Formula EQUIV_TOKEN Formula			{ $$ = new art::Formula(std::make_shared<art::Iff>(*$1, *$3)); delete $1; delete $3; }
+			| Formula IMPL_TOKEN Formula			{ $$ = new art::Formula(std::make_shared<art::If>(*$1, *$3)); delete $1; delete $3; }
+			| Formula DISJ_TOKEN Formula			{ $$ = new art::Formula(std::make_shared<art::Or>(*$1, *$3)); delete $1; delete $3; }
+			| Formula CONJ_TOKEN Formula			{ $$ = new art::Formula(std::make_shared<art::And>(*$1, *$3)); delete $1; delete $3; }
+			| NEG_TOKEN Formula						{ $$ = new art::Formula(std::make_shared<art::Not>(*$2)); delete $2; }
+			| UNIV_TOKEN  Variable '.' Formula		{ $$ = new art::Formula(std::make_shared<art::ForAll>(*$4, *$2)); delete $2; delete $4; }
+			| EXIST_TOKEN Variable '.' Formula		{ $$ = new art::Formula(std::make_shared<art::Exists>(*$4, *$2)); delete $2; delete $4; }
+			| '(' Formula ')'						{ $$ = $2; }
+			| Atomic								{ $$ = $1; }
 			;
 
-Atomic		: Predicate
-			| LogicalConstants
+Atomic		: Predicate					{ $$ = $1; }
+			| LogicalConstants			{ $$ = $1; }
 			;
 
-Predicate	: UninterpretedPredicate
-		  	| InterpretedPredicate
+Predicate	: UninterpretedPredicate	{ $$ = $1; }
+		  	| InterpretedPredicate		{ $$ = $1; }
 			;
 
-UninterpretedPredicate	: PRED_TOKEN Terms				{ delete $1; }
+UninterpretedPredicate	: PRED_TOKEN Terms
+					 		{
+								$$ = new art::Formula(std::make_shared<art::Predicate>(*$2,*$1));
+								delete $1;
+					 			delete $2;
+							}
 		  				;
 
-InterpretedPredicate	: Term EQUALS_TOKEN Term
-					 	| Term NOT_EQUALS_TOKEN Term
+InterpretedPredicate	: Term EQUALS_TOKEN Term	
+					 		{
+								$$ = new art::Formula(std::make_shared<art::Predicate>(
+														std::vector<art::Term>{*$1, *$3},
+														std::string("=")
+													)
+												);
+								delete $1;
+					 			delete $3;
+							}
+	
+					 	| Term NOT_EQUALS_TOKEN Term	{}
+					 		{
+								$$ = new art::Formula(std::make_shared<art::Predicate>(
+														std::vector<art::Term>{*$1, *$3},
+														std::string("=/=")
+													)
+												);
+								delete $1;
+					 			delete $3;
+							}
 						;
 
-LogicalConstants		: LOG_CONST_T
-				  		| LOG_CONST_F
+LogicalConstants		: LOG_CONST_T		{ $$ = new art::Formula(std::make_shared<art::True>());	}
+				  		| LOG_CONST_F		{ $$ = new art::Formula(std::make_shared<art::False>());	}
 						;
 
-Terms					: '(' TermList ')'
-	   					| '(' ')'
+Terms					: '(' TermList ')'	{ $$ = $2;						}
+	   					| '(' ')'			{ $$ = new std::vector<art::Term>;	}
 						;
 
-TermList	: TermList ',' Term
-		 	| Term
+TermList	: TermList ',' Term	{ $$ = $1; $$->push_back(*$3); delete $3;		}
+		 	| Term				{ $$ = new std::vector<art::Term>{*$1}; delete $1;	}
 			;
 
-Term		: VAR_TOKEN			{ delete $1; }
-	  		| CONST_TOKEN		{ delete $1; }
-			| FUN_TOKEN Terms	{ delete $1; }
+Term		: Variable			{ $$ = $1; }
+	  		| Constant			{ $$ = $1; }
+			| Function			{ $$ = $1; }
 			;
+
+Variable	: VAR_TOKEN			{ $$ = new art::Term(std::make_shared<art::Var>(*$1)); delete $1; }
+		 	;
+
+Constant	: CONST_TOKEN		{ $$ = new art::Term(std::make_shared<art::Constant>(*$1)); delete $1; }
+		 	;
+
+Function	: FUN_TOKEN Terms	{ $$ = new art::Term(std::make_shared<art::Function>(*$1, *$2)); delete $1; delete $2; }
+		 	;
+
 %%
 

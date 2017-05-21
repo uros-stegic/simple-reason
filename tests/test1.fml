@@ -1,1 +1,1 @@
-Ax.Ay. f(x,y) = f(y,x)
+(Ax.Ay. x = y => f(x,y) = f(y,x)) & (Ex.p(c1, x)) | ~(Ay1.q(y1, c2)) <=> T

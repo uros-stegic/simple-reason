@@ -3,14 +3,15 @@
 #include <transformations.hpp>
 #include <iterator>
 #include <string>
+#include <formulae.hpp>
 #include <parser.tab.hpp>
 
 #ifndef forever
 #define forever while(true)
 #endif
 
-using namespace art;
 
+extern art::Formula* formula;
 extern FILE* yyin;
 bool interactive = false;
 
@@ -20,6 +21,8 @@ void run_repl()
 	forever {
 		std::cout << "> ";
 		yyparse();
+		std::cout << *formula << std::endl;
+		delete formula;
 	}
 }
 void parse_input_file(char* filename)
@@ -33,6 +36,8 @@ void parse_input_file(char* filename)
 		std::exit(EXIT_FAILURE);
 	}
 	yyparse();
+	std::cout << *formula << std::endl;
+	delete formula;
 	fclose(yyin);
 }
 

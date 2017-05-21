@@ -5,6 +5,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <string>
+#include <formulae.hpp>
 
 #include <parser.tab.hpp>
 
