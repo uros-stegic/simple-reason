@@ -2,16 +2,42 @@
 #include <formulae.hpp>
 #include <transformations.hpp>
 #include <iterator>
+#include <string>
+#include <parser.tab.hpp>
+
+#ifndef forever
+#define forever while(true)
+#endif
 
 using namespace art;
 
-struct cmp {
-    bool operator()(const Formula& f, const Formula& g) const {
-        return f < g;
-    }
-};
+extern FILE* yyin;
+bool interactive = false;
+
+void run_repl()
+{
+	interactive = true;
+	forever {
+		std::cout << "> ";
+		yyparse();
+	}
+}
+void parse_input_file(char* filename)
+{
+	interactive = false;
+	yyin = fopen(filename, "r");
+	if( !yyin ) {
+		std::cerr	<< "Cannot open input file "
+					<< "\"" << filename << "\""
+					<< std::endl;
+		std::exit(EXIT_FAILURE);
+	}
+	yyparse();
+	fclose(yyin);
+}
 
 int main(int argc, char **argv) {
+	/*
     Formula ct = std::make_shared<True>();
     Formula cf = std::make_shared<False>();
 
@@ -76,6 +102,15 @@ int main(int argc, char **argv) {
     Formula fx = std::make_shared<ForAll>(fy, x);
 
     std::cout << fx << std::endl;
+	*/
+
+	if( argc == 1 ) {
+		run_repl();
+	}
+	else {
+		parse_input_file(argv[1]);
+	}
+
     return 0;
 }
 

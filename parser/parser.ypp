@@ -1,0 +1,86 @@
+%{
+#include <cstdlib>
+#include <string>
+#include <iostream>
+
+#define YYERROR_VERBOSE 1
+
+extern int yylex();
+extern bool interactive;
+
+void yyerror(const std::string& message)
+{
+	std::cerr << "[ERROR]: " << message << std::endl;
+}
+
+%}
+
+%union {
+	std::string* string;
+}
+
+%token<string> VAR_TOKEN FUN_TOKEN PRED_TOKEN CONST_TOKEN
+%token EQUIV_TOKEN IMPL_TOKEN DISJ_TOKEN CONJ_TOKEN NEG_TOKEN LOG_CONST_T LOG_CONST_F
+%token EQUALS_TOKEN NOT_EQUALS_TOKEN
+%token EXIT_TOKEN NEW_LINE
+
+%left UNIV_TOKEN EXIST_TOKEN '.'
+%left EQUIV_TOKEN
+%left IMPL_TOKEN
+%left DISJ_TOKEN
+%left CONJ_TOKEN
+%left NEG_TOKEN
+%nonassoc LOG_CONST_T LOG_CONST_F
+%nonassoc PRED_TOKEN FUN_TOKEN EQUALS_TOKEN NOT_EQUALS_TOKEN
+%nonassoc VAR_TOKEN CONST_TOKEN
+
+%%
+Expr		: Formula NEW_LINE	{ if( interactive ) return 0; }
+		 	| EXIT_TOKEN		{ std::cout << "Quiting" << std::endl; std::exit(EXIT_SUCCESS); }
+			;
+
+Formula		: Formula EQUIV_TOKEN Formula
+			| Formula IMPL_TOKEN Formula
+			| Formula DISJ_TOKEN Formula
+			| Formula CONJ_TOKEN Formula
+			| NEG_TOKEN Formula
+			| UNIV_TOKEN VAR_TOKEN '.' Formula
+			| EXIST_TOKEN VAR_TOKEN '.' Formula
+			| '(' Formula ')'
+			| Atomic
+			|
+			;
+
+Atomic		: Predicate
+			| LogicalConstants
+			;
+
+Predicate	: UninterpretedPredicate
+		  	| InterpretedPredicate
+			;
+
+UninterpretedPredicate	: PRED_TOKEN Terms				{ delete $1; }
+		  				;
+
+InterpretedPredicate	: Term EQUALS_TOKEN Term
+					 	| Term NOT_EQUALS_TOKEN Term
+						;
+
+LogicalConstants		: LOG_CONST_T
+				  		| LOG_CONST_F
+						;
+
+Terms					: '(' TermList ')'
+	   					| '(' ')'
+						;
+
+TermList	: TermList ',' Term
+		 	| Term
+			;
+
+Term		: VAR_TOKEN			{ delete $1; }
+	  		| CONST_TOKEN		{ delete $1; }
+			| FUN_TOKEN Terms	{ delete $1; }
+			;
+%%
+

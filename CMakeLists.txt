@@ -15,13 +15,22 @@ add_definitions(-std=c++11)
 INCLUDE(CMakeForceCompiler)
 CMAKE_FORCE_CXX_COMPILER(g++ GNU)
 
+# Flex&Bison configuration
+find_package (FLEX 2.5.35)
+find_package (BISON 2.4.1)
+
+BISON_TARGET(MyParser parser/parser.ypp ${CMAKE_CURRENT_BINARY_DIR}/parser.tab.cpp VERBOSE)
+FLEX_TARGET(MyScanner parser/lexer.l ${CMAKE_CURRENT_BINARY_DIR}/lex.yy.cpp)
+ADD_FLEX_BISON_DEPENDENCY(MyScanner MyParser)
+
 set(TARGET simple-reason)
 
-include_directories(${HEADERS})
-include_directories(${PROJECT_SOURCE_DIR}/include/formulae)
-include_directories(${PROJECT_SOURCE_DIR}/include/transformations)
-include_directories(${PROJECT_SOURCE_DIR}/include/semantics)
-include_directories(${PROJECT_BINARY_DIR})
+include_directories ("${CMAKE_CURRENT_BINARY_DIR}")
+include_directories ("${CMAKE_CURRENT_SOURCE_DIR}")
+include_directories ("${PROJECT_SOURCE_DIR}/include/formulae")
+include_directories ("${PROJECT_SOURCE_DIR}/include/transformations")
+include_directories ("${PROJECT_SOURCE_DIR}/include/semantics")
+include_directories ("${PROJECT_BINARY_DIR}")
 
 file(GLOB RESOURCES
     ${PROJECT_SOURCE_DIR}/src/*.cpp
@@ -35,6 +44,8 @@ file(GLOB RESOURCES
 )
 
 add_executable(${TARGET}
+	${FLEX_MyScanner_OUTPUTS}
+	${BISON_MyParser_OUTPUTS}
     ${RESOURCES}
 )
 
