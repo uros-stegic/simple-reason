@@ -10,7 +10,7 @@ class Equals : public Predicate{
     virtual void print_formula(std::ostream & out) const override;
 
 private:
-   const Term& m_t1, m_t2;
+    Term m_t1, m_t2;
 };
 }
 
