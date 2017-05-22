@@ -11,6 +11,6 @@ FormulaType False::get_type() const
 }
 void False::print_formula(std::ostream& out) const
 {
-    out << "0";
+    out << "⊥";
 }
 

@@ -11,7 +11,7 @@ FormulaType True::get_type() const
 }
 void True::print_formula(std::ostream& out) const
 {
-    out << "1";
+    out << "⊤";
 }
 
 
