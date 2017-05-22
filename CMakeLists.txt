@@ -12,8 +12,6 @@ configure_file (
 )
 
 add_definitions(-std=c++11)
-INCLUDE(CMakeForceCompiler)
-CMAKE_FORCE_CXX_COMPILER(g++ GNU)
 
 # Flex&Bison configuration
 find_package (FLEX 2.5.35)

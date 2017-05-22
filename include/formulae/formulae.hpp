@@ -13,3 +13,4 @@
 #include <var.hpp>
 #include <constant.hpp>
 #include <exists.hpp>
+#include <equals.hpp>

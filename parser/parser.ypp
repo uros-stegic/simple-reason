@@ -84,9 +84,9 @@ UninterpretedPredicate	: PRED_TOKEN Terms
 
 InterpretedPredicate	: Term EQUALS_TOKEN Term	
 					 		{
-								$$ = new art::Formula(std::make_shared<art::Predicate>(
-														std::vector<art::Term>{*$1, *$3},
-														std::string("=")
+								$$ = new art::Formula(std::make_shared<art::Equals>(
+														art::Term (*$1), 
+														art::Term (*$3)
 													)
 												);
 								delete $1;
