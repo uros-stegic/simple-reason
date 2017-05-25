@@ -20,9 +20,12 @@ void run_repl()
 	interactive = true;
 	forever {
 		std::cout << "> ";
-		yyparse();
-		std::cout << *formula << std::endl;
-		delete formula;
+		int err = yyparse();
+		if( !err && formula != nullptr ) {
+			std::cout << *formula << std::endl << std::endl;
+			delete formula;
+			formula = nullptr;
+		}
 	}
 }
 void parse_input_file(char* filename)
@@ -35,9 +38,12 @@ void parse_input_file(char* filename)
 					<< std::endl;
 		std::exit(EXIT_FAILURE);
 	}
-	yyparse();
-	std::cout << *formula << std::endl;
-	delete formula;
+	int err = yyparse();
+	if( !err && formula != nullptr ) {
+		std::cout << *formula << std::endl;
+		delete formula;
+		formula = nullptr;
+	}
 	fclose(yyin);
 }
 

@@ -14,11 +14,11 @@ art::Formula *formula = nullptr;
 
 void yyerror(const std::string& message)
 {
-	std::cerr << "[ERROR]: " << message << std::endl;
+	std::cerr << "[ERROR]: " << message << std::endl << std::endl;
 	if( formula != nullptr ) {
 		delete formula;
+		formula = nullptr;
 	}
-	std::exit(EXIT_FAILURE);
 }
 
 %}
@@ -46,14 +46,19 @@ void yyerror(const std::string& message)
 %nonassoc VAR_TOKEN CONST_TOKEN
 
 
-%type<formula> Formula Atomic Predicate UninterpretedPredicate InterpretedPredicate LogicalConstants 
+%type<formula> Formula FormulaP Atomic Predicate UninterpretedPredicate InterpretedPredicate LogicalConstants 
 %type<term> Term Variable Function Constant
 %type<term_list> Terms TermList
 %%
-Expr		: Formula NEW_LINE	{ formula = $1; if( interactive ) return 0; }
+Expr		: FormulaP NEW_LINE	{ formula = $1; if( interactive ) return 0; }
 		 	| EXIT_TOKEN		{ std::cout << "Quiting" << std::endl; std::exit(EXIT_SUCCESS); }
-			| NEW_LINE			{}
+			| NEW_LINE			{ if( interactive ) return 0; }
 			;
+
+FormulaP	: Formula			{ $$ = $1; }
+		 	| error Formula		{ yyerrok; return 1; }
+		 	;
+
 
 Formula		: Formula EQUIV_TOKEN Formula			{ $$ = new art::Formula(std::make_shared<art::Iff>(*$1, *$3)); delete $1; delete $3; }
 			| Formula IMPL_TOKEN Formula			{ $$ = new art::Formula(std::make_shared<art::If>(*$1, *$3)); delete $1; delete $3; }
