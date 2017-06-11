@@ -17,6 +17,7 @@ public:
     virtual FormulaType get_type() const override;
     virtual bool operator <(const Formula&) const override;
     virtual bool m_is_equal(const Formula&) const override;
+    std::vector<Term> terms() const;
 
 private:
     std::string m_name;

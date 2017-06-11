@@ -54,3 +54,8 @@ bool Function::m_is_equal(const Term&) const
 {
     return false;
 }
+
+std::vector<Term> Function::terms() const
+{
+    return m_terms;
+}

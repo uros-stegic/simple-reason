@@ -52,3 +52,8 @@ bool Predicate::m_is_equal(const Formula& other) const
 {
     return m_name == static_cast<const Predicate*>(other.get())->name();
 }
+
+std::vector<Term> Predicate::terms() const
+{
+    return m_terms;
+}

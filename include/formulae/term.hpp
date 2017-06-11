@@ -13,6 +13,7 @@ enum TermType {
 };
 
 class BaseTerm;
+class Transformation;
 
 typedef std::shared_ptr<const BaseTerm> Term;
 
@@ -27,6 +28,7 @@ public:
     virtual int complexity() const = 0;
     virtual bool equals(const Term&) const;
     Term copy() const;
+    Term transform(const Transformation&) const;
 
 
 protected:

@@ -1,3 +1,4 @@
+#include <transformation.hpp>
 #include <composite_transformation.hpp>
 #include <conjunction_distribution.hpp>
 #include <disjunction_distribution.hpp>
@@ -7,3 +8,4 @@
 #include <nnf.hpp>
 #include <simplification.hpp>
 #include <prenex.hpp>
+#include <rename.hpp>

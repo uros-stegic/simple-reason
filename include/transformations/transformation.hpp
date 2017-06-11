@@ -2,6 +2,7 @@
 #define TRANSFORMATION_HPP
 
 #include <formula.hpp>
+#include <term.hpp>
 
 namespace art {
 /**
@@ -13,6 +14,7 @@ namespace art {
 class Transformation {
 public:
     virtual Formula transform(const Formula&) const = 0;
+    virtual Term transform(const Term&) const;
 };
 }
 

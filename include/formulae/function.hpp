@@ -15,6 +15,7 @@ public:
     virtual void print_term(std::ostream &) const override;
     virtual TermType get_type() const override;
     virtual int complexity() const override;
+    std::vector<Term> terms() const;
 
 protected:
     bool m_is_equal(const Term&) const override;

@@ -87,3 +87,12 @@ bool operator <=(const Formula& f, const Formula& g) {
 bool operator >=(const Formula& f, const Formula& g) {
     return !(f < g);
 }
+
+std::string BaseFormula::unique()
+{
+    std::string result = "uv" + std::to_string(BaseFormula::m_next_unique);
+    BaseFormula::m_next_unique++;
+    return result;
+}
+
+unsigned int BaseFormula::m_next_unique = 0;

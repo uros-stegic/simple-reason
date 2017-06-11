@@ -86,10 +86,16 @@ public:
 
     Formula transform(const Transformation&) const;
     virtual Formula substitute(const Formula&, const Formula&) const = 0;
+
+    static std::string unique();
     
 protected:
     virtual bool m_is_equal(const Formula&) const = 0;
     virtual void m_get_atoms(AtomSet&) const;
+
+private:
+    static unsigned int m_next_unique;
+
 };
 }
 std::ostream& operator <<(std::ostream& out, const art::Formula& f);

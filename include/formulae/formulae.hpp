@@ -1,4 +1,6 @@
 #include <formula.hpp>
+#include <term.hpp>
+
 #include <letter.hpp>
 #include <true_constant.hpp>
 #include <false_constant.hpp>
@@ -9,6 +11,7 @@
 #include <equivalence.hpp>
 #include <for_all.hpp>
 #include <predicate.hpp>
+
 #include <function.hpp>
 #include <var.hpp>
 #include <constant.hpp>
