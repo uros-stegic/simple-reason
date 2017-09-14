@@ -24,7 +24,10 @@ void run_repl()
 		if( !err && formula != nullptr ) {
             std::cout << *formula << std::endl;
             art::Transformation *t = new art::Rename("x");
-            std::cout << (*formula)->transform(*t) << std::endl << std::endl;
+            art::Transformation *n = new art::NegationDistribution();
+			auto res = (*formula)->transform(*t);
+			auto res2 = (*formula)->transform(*n);
+            std::cout << res2 << std::endl << std::endl;
             delete formula;
             delete t;
             formula = nullptr;
