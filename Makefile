@@ -8,7 +8,7 @@ build:
 	cmake ..;\
 	make;\
 	echo "================ Executing program ================";\
-	time ./simple-reason ../tests/test2.fml;\
+	time ./simple-reason ../tests/test3.fml;\
 	echo "===================================================";
 
 clean:

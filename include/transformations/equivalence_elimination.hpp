@@ -1,5 +1,5 @@
-#ifndef ELIMINATION_HPP
-#define ELIMINATION_HPP
+#ifndef EQUIVALENCE_ELIMINATION_HPP
+#define EQUIVALENCE_ELIMINATION_HPP
 
 #include <transformation.hpp>
 #include <formula.hpp>
@@ -10,9 +10,9 @@ namespace art {
  * p => q == !p | q
  * p <=> q == (!p | q) & (p | !q)
  */
-class Elimination : public Transformation {
+class EquivalenceElimination : public Transformation {
     virtual Formula transform(const Formula &) const;
 };
 }
 
-#endif // ELIMINATION_HPP
+#endif // EQUIVALENCE_ELIMINATION_HPP

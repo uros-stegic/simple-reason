@@ -23,11 +23,9 @@ void run_repl()
 		int err = yyparse();
 		if( !err && formula != nullptr ) {
             std::cout << *formula << std::endl;
-            art::Transformation *t = new art::Rename("x");
-            art::Transformation *n = new art::NegationDistribution();
+            art::Transformation *t = new art::EquivalenceElimination();
 			auto res = (*formula)->transform(*t);
-			auto res2 = (*formula)->transform(*n);
-            std::cout << res2 << std::endl << std::endl;
+            std::cout << res << std::endl << std::endl;
             delete formula;
             delete t;
             formula = nullptr;
