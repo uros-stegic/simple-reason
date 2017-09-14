@@ -10,8 +10,6 @@
 #define forever while(true)
 #endif
 
-
-extern art::Formula* formula;
 extern FILE* yyin;
 bool interactive = false;
 
@@ -20,16 +18,7 @@ void run_repl()
 	interactive = true;
 	forever {
 		std::cout << "> ";
-		int err = yyparse();
-		if( !err && formula != nullptr ) {
-            std::cout << *formula << std::endl;
-            art::Transformation *t = new art::DisjunctionDistribution();
-			auto res = (*formula)->transform(*t);
-            std::cout << res << std::endl << std::endl;
-            delete formula;
-            delete t;
-            formula = nullptr;
-		}
+		yyparse();
 	}
 }
 void parse_input_file(char* filename)
@@ -42,12 +31,7 @@ void parse_input_file(char* filename)
 					<< std::endl;
 		std::exit(EXIT_FAILURE);
 	}
-	int err = yyparse();
-	if( !err && formula != nullptr ) {
-		std::cout << *formula << std::endl;
-		delete formula;
-		formula = nullptr;
-	}
+	yyparse();
 	fclose(yyin);
 }
 

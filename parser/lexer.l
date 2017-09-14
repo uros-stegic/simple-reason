@@ -6,6 +6,7 @@
 #include <cstdlib>
 #include <string>
 #include <formulae.hpp>
+#include <transformations.hpp>
 
 #include <parser.tab.hpp>
 
@@ -33,17 +34,38 @@ CONSTANT		c[0-9]*
 EQUALS			"="
 NOT_EQUALS		"=/="
 
+IDENT			\$[a-zA-Z][a-zA-Z0-9]*
+ASSIGN_TOKEN	":="
+CNF_TOKEN		"cnf"|"CNF"
+NNF_TOKEN		"nnf"|"NNF"
+C_DISTR_TOKEN	"c_distr"|"C_DISTR"
+D_DISTR_TOKEN	"d_distr"|"D_DISTR"
+N_DISTR_TOKEN	"n_distr"|"N_DISTR"
+SIMPLIFY_TOKEN	"simplify"|"SIMPLIFY"
+NO_IMPS_TOKEN	"no_imps"|"NO_IMPS"
+DELETE_TOKEN	"delete"|"DELETE"
+
 EXIT			"exit"|"quit"
 END_OF_EXPRESSION		"\n"
 %%
 
-{EXIT}			{ return EXIT_TOKEN;	}
-{END_OF_EXPRESSION}		{ return END_OF_EXPRESSION;		}
+{DELETE_TOKEN}		{ return DELETE_TOKEN; }
+{CNF_TOKEN}			{ return CNF_TOKEN; }
+{NNF_TOKEN}			{ return NNF_TOKEN; }
+{NO_IMPS_TOKEN}		{ return NO_IMPS_TOKEN; }
+{C_DISTR_TOKEN}		{ return C_DISTR_TOKEN; }
+{D_DISTR_TOKEN}		{ return D_DISTR_TOKEN; }
+{N_DISTR_TOKEN}		{ return N_DISTR_TOKEN; }
+{SIMPLIFY_TOKEN}	{ return SIMPLIFY_TOKEN; }
+{EXIT}				{ return EXIT_TOKEN;	}
+{END_OF_EXPRESSION}	{ return END_OF_EXPRESSION;		}
 
 {VARIABLE}		{ yylval.string = new std::string(yytext); return VAR_TOKEN;	}
 {PREDICATE}		{ yylval.string = new std::string(yytext); return PRED_TOKEN;	}
 {FUNCTION}		{ yylval.string = new std::string(yytext); return FUN_TOKEN;	}
 {CONSTANT}		{ yylval.string = new std::string(yytext); return CONST_TOKEN;	}
+
+{IDENT}			{ yylval.string = new std::string(yytext); return IDENT;		}
 
 {UNIVERSAL}		{ return UNIV_TOKEN;		}
 {EXISTANCE}		{ return EXIST_TOKEN;		}
@@ -57,6 +79,7 @@ END_OF_EXPRESSION		"\n"
 
 {EQUALS}		{ return EQUALS_TOKEN;		}
 {NOT_EQUALS}	{ return NOT_EQUALS_TOKEN;	}
+{ASSIGN_TOKEN}	{ return ASSIGN_TOKEN;		}
 [().,\n]		{ return *yytext; 			}
 
 [ \t\r]+		{ /* DON'T DO ANYTHING IN CASE OF BLANKS */						}
