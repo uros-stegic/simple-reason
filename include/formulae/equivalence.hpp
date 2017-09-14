@@ -4,7 +4,6 @@
 #include <iostream>
 
 #include <binary_formula.hpp>
-#include <valuation.hpp>
 #include <formula.hpp>
 
 /**

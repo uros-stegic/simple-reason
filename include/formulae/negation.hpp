@@ -5,7 +5,6 @@
 
 #include <unary_formula.hpp>
 #include <formula.hpp>
-#include <valuation.hpp>
 
 /**
  *This class provides us the unary operator NOT using UnaryFormula constructor and methods.

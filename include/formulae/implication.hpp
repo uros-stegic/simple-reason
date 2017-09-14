@@ -5,7 +5,6 @@
 
 #include <binary_formula.hpp>
 #include <formula.hpp>
-#include <valuation.hpp>
 
 /**
  * This class provides us application of binary "If" operator (aka. implication) to the formulas we

@@ -4,7 +4,6 @@
 #include <iostream>
 
 #include <logic_constant.hpp>
-#include <valuation.hpp>
 #include <formula.hpp>
 
 /**

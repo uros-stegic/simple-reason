@@ -1,5 +1,4 @@
 #include <disjunction.hpp>
-#include <valuation.hpp>
 
 #include <iostream>
 

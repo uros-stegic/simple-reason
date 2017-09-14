@@ -5,7 +5,6 @@
 
 #include <logic_constant.hpp>
 #include <formula.hpp>
-#include <valuation.hpp>
 
 namespace art {
 class False : public LogicConstant {
