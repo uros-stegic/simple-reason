@@ -31,6 +31,11 @@ namespace art {
  * T <=> p == p
  * F <=> p == !p
  *
+ * Ax.T == T
+ * Ax.F == F
+ * Ex.T == T
+ * Ex.F == F
+ *
  */
 class Simplification : public Transformation {
 public:

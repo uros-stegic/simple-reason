@@ -13,6 +13,7 @@ Formula Simplification::transform(const Formula &f) const
     	case PROP_LETTER:
     	case PROP_TRUE:
     	case PROP_FALSE:
+		case PREDICATE:
     	    return f->copy();
     	case NEGATION: {
     	    const Not *neg = static_cast<const Not*>(f.get());
@@ -107,5 +108,21 @@ Formula Simplification::transform(const Formula &f) const
     	    }
     	    return std::make_shared<Iff>(left, right);
     	}
+		case FOR_ALL: {
+			const ForAll* fall = static_cast<const ForAll*>(f.get());
+			auto op = fall->get_operand()->transform(*this);
+			if( op->get_type() == PROP_TRUE || op->get_type() == PROP_FALSE ) {
+				return op;
+			}
+			return std::make_shared<ForAll>(op, fall->var());
+		}
+		case EXISTS: {
+			const Exists* exs = static_cast<const Exists*>(f.get());
+			auto op = exs->get_operand()->transform(*this);
+			if( op->get_type() == PROP_TRUE || op->get_type() == PROP_FALSE ) {
+				return op;
+			}
+			return std::make_shared<Exists>(op, exs->var());
+		}
     }
 }

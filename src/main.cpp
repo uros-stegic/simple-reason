@@ -23,7 +23,7 @@ void run_repl()
 		int err = yyparse();
 		if( !err && formula != nullptr ) {
             std::cout << *formula << std::endl;
-            art::Transformation *t = new art::EquivalenceElimination();
+            art::Transformation *t = new art::Simplification();
 			auto res = (*formula)->transform(*t);
             std::cout << res << std::endl << std::endl;
             delete formula;
