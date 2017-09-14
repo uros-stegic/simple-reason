@@ -11,7 +11,7 @@ FormulaType And::get_type() const
 
 void And::m_print_formula(std::ostream& out) const
 {
-    out << " Λ ";
+    out << " ∧ ";
 }
 
 Formula And::substitute(const Formula& from, const Formula& to) const

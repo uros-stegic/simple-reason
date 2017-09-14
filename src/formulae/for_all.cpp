@@ -6,7 +6,7 @@ using namespace art;
 
 void ForAll::m_print_formula(std::ostream& out) const
 {
-    out << "Ɐ";
+    out << "∀";
     var()->print_term(out);
     out << ". ";
 
