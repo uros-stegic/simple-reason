@@ -91,13 +91,13 @@ Term Rename::transform(const Term &t) const
         }
         case FUNCTION: {
             const Function* th = static_cast<const Function*>(t.get());
+			auto terms = th->terms();
             std::vector<Term> ts;
             std::transform(
-                std::begin(th->terms()),
-                std::end(th->terms()),
+                std::begin(terms),
+                std::end(terms),
                 std::back_inserter(ts),
-                [&](const Term& t) {
-                    Term tp = t->transform(*this);
+                [this](const Term& t) {
                     return t->transform(*this);
                 }
             );

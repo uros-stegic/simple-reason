@@ -34,11 +34,11 @@ EQUALS			"="
 NOT_EQUALS		"=/="
 
 EXIT			"exit"|"quit"
-NEW_LINE		"\n"
+END_OF_EXPRESSION		"\n"
 %%
 
 {EXIT}			{ return EXIT_TOKEN;	}
-{NEW_LINE}		{ return NEW_LINE;		}
+{END_OF_EXPRESSION}		{ return END_OF_EXPRESSION;		}
 
 {VARIABLE}		{ yylval.string = new std::string(yytext); return VAR_TOKEN;	}
 {PREDICATE}		{ yylval.string = new std::string(yytext); return PRED_TOKEN;	}

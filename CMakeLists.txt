@@ -21,6 +21,9 @@ BISON_TARGET(MyParser parser/parser.ypp ${CMAKE_CURRENT_BINARY_DIR}/parser.tab.c
 FLEX_TARGET(MyScanner parser/lexer.l ${CMAKE_CURRENT_BINARY_DIR}/lex.yy.cpp)
 ADD_FLEX_BISON_DEPENDENCY(MyScanner MyParser)
 
+# Debug symbols
+set(CMAKE_BUILD_TYPE Debug)
+
 set(TARGET simple-reason)
 
 include_directories ("${CMAKE_CURRENT_BINARY_DIR}")

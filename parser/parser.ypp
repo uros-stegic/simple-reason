@@ -33,7 +33,7 @@ void yyerror(const std::string& message)
 %token<string> VAR_TOKEN FUN_TOKEN PRED_TOKEN CONST_TOKEN
 %token EQUIV_TOKEN IMPL_TOKEN DISJ_TOKEN CONJ_TOKEN NEG_TOKEN LOG_CONST_T LOG_CONST_F
 %token EQUALS_TOKEN NOT_EQUALS_TOKEN
-%token EXIT_TOKEN NEW_LINE
+%token EXIT_TOKEN END_OF_EXPRESSION
 
 %left UNIV_TOKEN EXIST_TOKEN '.'
 %left EQUIV_TOKEN
@@ -50,13 +50,14 @@ void yyerror(const std::string& message)
 %type<term> Term Variable Function Constant
 %type<term_list> Terms TermList
 %%
-Expr		: FormulaP NEW_LINE	{ formula = $1; if( interactive ) return 0; }
-		 	| EXIT_TOKEN		{ std::cout << "Quiting" << std::endl; std::exit(EXIT_SUCCESS); }
-			| NEW_LINE			{ if( interactive ) return 0; }
+Expr		: FormulaP END_OF_EXPRESSION			{ formula = $1; if( interactive ) return 0; }
+			| END_OF_EXPRESSION						{ if( interactive ) return 0; }
+		 	| EXIT_TOKEN							{ std::cout << "Quiting" << std::endl; std::exit(EXIT_SUCCESS); }
+		 	| 										{ std::cout << std::endl << "Quiting" << std::endl; std::exit(EXIT_SUCCESS); }
 			;
 
-FormulaP	: Formula			{ $$ = $1; }
-		 	| error Formula		{ yyerrok; return 1; }
+FormulaP	: Formula								{ $$ = $1; }
+		 	| error 								{ return 1; }
 		 	;
 
 
@@ -71,12 +72,12 @@ Formula		: Formula EQUIV_TOKEN Formula			{ $$ = new art::Formula(std::make_share
 			| Atomic								{ $$ = $1; }
 			;
 
-Atomic		: Predicate					{ $$ = $1; }
-			| LogicalConstants			{ $$ = $1; }
+Atomic		: Predicate								{ $$ = $1; }
+			| LogicalConstants						{ $$ = $1; }
 			;
 
-Predicate	: UninterpretedPredicate	{ $$ = $1; }
-		  	| InterpretedPredicate		{ $$ = $1; }
+Predicate	: UninterpretedPredicate				{ $$ = $1; }
+		  	| InterpretedPredicate					{ $$ = $1; }
 			;
 
 UninterpretedPredicate	: PRED_TOKEN Terms
