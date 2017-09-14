@@ -10,14 +10,14 @@ enum FormulaType {
     PROP_LETTER,
     PROP_TRUE,
     PROP_FALSE,
+    PREDICATE,
     NEGATION,
     CONJUNCTION,
     DISJUNCTION,
-    IMPLICATION,
-    EQUIVALENCE,
-    PREDICATE,
     FOR_ALL,
-    EXISTS
+    EXISTS,
+    IMPLICATION,
+    EQUIVALENCE
 };
 
 class BaseFormula;

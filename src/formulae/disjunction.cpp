@@ -11,7 +11,7 @@ FormulaType Or::get_type() const
 
 void Or::m_print_formula(std::ostream& out) const
 {
-    out << " ν ";
+    out << " ∨ ";
 }
 
 Formula Or::substitute(const Formula& from, const Formula& to) const
