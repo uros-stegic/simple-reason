@@ -35,7 +35,7 @@ void yyerror(const std::string& message)
 %token ASSIGN_TOKEN
 
 %left DELETE_TOKEN
-%left NNF_TOKEN CNF_TOKEN C_DISTR_TOKEN D_DISTR_TOKEN N_DISTR_TOKEN SIMPLIFY_TOKEN NO_IMPS_TOKEN QUANT_UP
+%left NNF_TOKEN CNF_TOKEN C_DISTR_TOKEN D_DISTR_TOKEN N_DISTR_TOKEN SIMPLIFY_TOKEN NO_IMPS_TOKEN QUANT_UP PRENEX_TOKEN
 %left UNIV_TOKEN EXIST_TOKEN '.'
 %left EQUIV_TOKEN
 %left IMPL_TOKEN
@@ -154,6 +154,12 @@ Formula		: Formula EQUIV_TOKEN Formula			{ $$ = new art::Formula(std::make_share
 				}
 			| QUANT_UP Formula {
 					art::Transformation *p = new art::QuantifierExtraction();
+					$$ = new art::Formula((*$2)->transform(*p));
+					delete p;
+					delete $2;
+				}
+			| PRENEX_TOKEN Formula {
+					art::Transformation *p = new art::Prenex();
 					$$ = new art::Formula((*$2)->transform(*p));
 					delete p;
 					delete $2;

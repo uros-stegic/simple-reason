@@ -12,11 +12,11 @@ enum FormulaType {
     PROP_TRUE,
     PROP_FALSE,
     PREDICATE,
+    FOR_ALL,
+    EXISTS,
     NEGATION,
     CONJUNCTION,
     DISJUNCTION,
-    FOR_ALL,
-    EXISTS,
     IMPLICATION,
     EQUIVALENCE
 };

@@ -36,11 +36,15 @@ void parse_input_file(char* filename)
 }
 
 int main(int argc, char **argv) {
-	if( argc == 1 ) {
-		run_repl();
-	}
-	else {
-		parse_input_file(argv[1]);
+	try {
+		if( argc == 1 ) {
+			run_repl();
+		}
+		else {
+			parse_input_file(argv[1]);
+		}
+	} catch(std::runtime_error* err) {
+		std::cerr << err->what() << std::endl;
 	}
 
     return 0;

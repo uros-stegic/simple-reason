@@ -45,11 +45,13 @@ SIMPLIFY_TOKEN	"simplify"|"SIMPLIFY"
 NO_IMPS_TOKEN	"no_imps"|"NO_IMPS"
 DELETE_TOKEN	"delete"|"DELETE"
 QUANT_UP		"quant_up"|"QUANT_UP"
+PRENEX_TOKEN	"prenex"|"PRENEX"
 
 EXIT			"exit"|"quit"
 END_OF_EXPRESSION		"\n"
 %%
 
+{PRENEX_TOKEN}		{ return PRENEX_TOKEN; }
 {QUANT_UP}			{ return QUANT_UP; }
 {DELETE_TOKEN}		{ return DELETE_TOKEN; }
 {CNF_TOKEN}			{ return CNF_TOKEN; }
