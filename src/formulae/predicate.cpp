@@ -4,6 +4,7 @@
 #include <string>
 #include <algorithm>
 #include <term.hpp>
+#include <numeric>
 #include <predicate.hpp>
 
 using namespace art;
@@ -57,3 +58,16 @@ std::vector<Term> Predicate::terms() const
 {
     return m_terms;
 }
+
+bool Predicate::has_free(const std::string& var) const
+{
+	return std::accumulate(
+		std::begin(m_terms),
+		std::end(m_terms),
+		false,
+		[var](bool acc, const Term& t) {
+			return acc || t->has_free(var);
+		}
+	);
+}
+

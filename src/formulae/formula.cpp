@@ -96,3 +96,12 @@ std::string BaseFormula::unique()
 }
 
 unsigned int BaseFormula::m_next_unique = 0;
+
+bool BaseFormula::has_free(const Term& var) const
+{
+	if( var->get_type() == VARIABLE ) {
+		return has_free(static_cast<const Var*>(var.get())->name());
+	}
+	return false;
+}
+

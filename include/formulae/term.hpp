@@ -27,6 +27,7 @@ public:
     virtual void print_term(std::ostream&) const = 0;
     virtual int complexity() const = 0;
     virtual bool equals(const Term&) const;
+	virtual bool has_free(const std::string&) const = 0;
     Term copy() const;
     Term transform(const Transformation&) const;
 

@@ -51,6 +51,7 @@ public:
     virtual bool operator <(const Formula&) const override;
 
     Formula get_operand() const;
+	bool has_free(const std::string&) const override;
 
 protected:
     bool m_is_equal(const Formula&) const override;

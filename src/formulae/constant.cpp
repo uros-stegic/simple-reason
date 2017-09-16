@@ -34,3 +34,9 @@ bool Constant::m_is_equal(const Term& other) const
 //    const Constant* con = static_cast<const Constant*>(r);
     return m_name == static_cast<const Constant*>(other.get())->name();
 }
+
+bool Constant::has_free(const std::string&) const
+{
+	return false;
+}
+

@@ -116,6 +116,7 @@ public:
     Formula get_left_operand() const;
     Formula get_right_operand() const;
 
+	bool has_free(const std::string&) const override;
     virtual bool is_literal() const override;
     virtual int complexity() const override;
     virtual bool operator <(const Formula&) const override;

@@ -13,6 +13,7 @@ public:
     virtual void print_term(std::ostream &) const override;
     virtual TermType get_type() const override;
     virtual int complexity() const override;
+	bool has_free(const std::string&) const override;
 
 protected:
      virtual bool m_is_equal(const Term&) const override;

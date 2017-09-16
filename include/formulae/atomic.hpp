@@ -39,6 +39,7 @@ public:
     virtual bool is_literal() const override;
     virtual int complexity() const override;
     virtual Formula substitute(const Formula&, const Formula&) const override;
+	virtual bool has_free(const std::string&) const override;
 };
 }
 

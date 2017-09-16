@@ -49,3 +49,9 @@ void UnaryFormula::print_formula(std::ostream& out) const
         out << ")";
     }
 }
+
+bool UnaryFormula::has_free(const std::string& var) const
+{
+	return m_operand->has_free(var);
+}
+

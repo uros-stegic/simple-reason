@@ -4,6 +4,7 @@
 #include <iostream>
 #include <set>
 #include <memory>
+#include <term.hpp>
 
 namespace art {
 enum FormulaType {
@@ -77,6 +78,8 @@ public:
 
     virtual AtomSet get_atoms() const;
     virtual bool is_literal() const = 0;
+	virtual bool has_free(const std::string&) const = 0;
+	bool has_free(const Term&) const;
     virtual bool operator <(const Formula&) const = 0;
     bool operator !=(const Formula&) const;
     bool operator ==(const Formula&) const;

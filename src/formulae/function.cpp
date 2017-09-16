@@ -59,3 +59,16 @@ std::vector<Term> Function::terms() const
 {
     return m_terms;
 }
+
+bool Function::has_free(const std::string& var) const
+{
+   return std::accumulate(
+        std::begin(m_terms),
+        std::end(m_terms),
+        false,
+        [var](bool acc, const Term &term){
+          return acc || term->has_free(var);
+        }
+    );
+}
+

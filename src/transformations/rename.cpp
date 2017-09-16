@@ -8,6 +8,12 @@ Rename::Rename(std::string var, std::string to)
     : m_var(var)
     , m_to(to)
 {}
+Rename::Rename(const Term& t, std::string to)
+    : m_var("")
+    , m_to(to)
+{
+	m_var = static_cast<const Var*>(t.get())->name();
+}
 
 Formula Rename::transform(const Formula& f) const
 {

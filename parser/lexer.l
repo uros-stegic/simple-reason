@@ -44,11 +44,13 @@ N_DISTR_TOKEN	"n_distr"|"N_DISTR"
 SIMPLIFY_TOKEN	"simplify"|"SIMPLIFY"
 NO_IMPS_TOKEN	"no_imps"|"NO_IMPS"
 DELETE_TOKEN	"delete"|"DELETE"
+QUANT_UP		"quant_up"|"QUANT_UP"
 
 EXIT			"exit"|"quit"
 END_OF_EXPRESSION		"\n"
 %%
 
+{QUANT_UP}			{ return QUANT_UP; }
 {DELETE_TOKEN}		{ return DELETE_TOKEN; }
 {CNF_TOKEN}			{ return CNF_TOKEN; }
 {NNF_TOKEN}			{ return NNF_TOKEN; }

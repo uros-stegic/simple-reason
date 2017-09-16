@@ -12,6 +12,7 @@ class Quantifier : public UnaryFormula {
 public:
     Quantifier(const Formula&, const Term&);
     virtual Term var() const;
+	bool has_free(const std::string&) const override;
     virtual bool is_literal() const override;
 
 private:

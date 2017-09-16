@@ -73,3 +73,9 @@ void BinaryFormula::print_formula(std::ostream& out) const
         out << ")";
     }
 }
+
+bool BinaryFormula::has_free(const std::string& var) const
+{
+	return m_left_operand->has_free(var) || m_right_operand->has_free(var);
+}
+

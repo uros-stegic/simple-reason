@@ -9,3 +9,5 @@
 #include <simplification.hpp>
 #include <prenex.hpp>
 #include <rename.hpp>
+#include <quantifier_extraction.hpp>
+

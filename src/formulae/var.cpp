@@ -33,5 +33,8 @@ bool Var::m_is_equal(const Term& other) const
     return m_name == static_cast<const Var*>(other.get())->name();
 }
 
-
+bool Var::has_free(const std::string& var) const
+{
+	return var == m_name;
+}
 

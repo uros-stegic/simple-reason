@@ -19,3 +19,9 @@ Formula AtomicFormula::substitute(const Formula& from, const Formula& to) const
     }
     return shared_from_this();
 }
+
+bool AtomicFormula::has_free(const std::string&) const
+{
+	return false;
+}
+
