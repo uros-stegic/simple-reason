@@ -12,7 +12,7 @@ Equals::Equals(const Term& t1, const Term& t2)
 void Equals::print_formula(std::ostream & out) const
 {
     m_t1->print_term(out);
-    out << " = ";
+    out << " " << name() << " ";
     m_t2->print_term(out);
 }
 

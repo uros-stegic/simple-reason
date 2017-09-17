@@ -17,3 +17,5 @@
 #include <constant.hpp>
 #include <exists.hpp>
 #include <equals.hpp>
+#include <not_equals.hpp>
+

@@ -10,4 +10,6 @@
 #include <prenex.hpp>
 #include <rename.hpp>
 #include <quantifier_extraction.hpp>
+#include <ackermann_step.hpp>
+#include <ackermann_reduction.hpp>
 

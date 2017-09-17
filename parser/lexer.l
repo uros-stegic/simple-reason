@@ -29,7 +29,7 @@ LOG_FALSE		"F"
 PREDICATE		[pqr][0-9]*
 VARIABLE		[xyz][0-9]*
 FUNCTION		[fgh][0-9]*
-CONSTANT		c[0-9]*
+CONSTANT		[abc1-9][0-9]*
 
 EQUALS			"="
 NOT_EQUALS		"=/="
@@ -46,6 +46,7 @@ NO_IMPS_TOKEN	"no_imps"|"NO_IMPS"
 DELETE_TOKEN	"delete"|"DELETE"
 QUANT_UP		"quant_up"|"QUANT_UP"
 PRENEX_TOKEN	"prenex"|"PRENEX"
+ACK_TOKEN		"ack"|"ACK"
 
 EXIT			"exit"|"quit"
 END_OF_EXPRESSION		"\n"
