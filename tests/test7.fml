@@ -1,2 +1,6 @@
 $a := f(f(x)) = 1 | f(x) =/= 2
-prenex $a
+ack $a
+$a := x=y => f(x) =/= f(y) | f(x) =/= f(z)
+ack $a
+$a := x=y => g(x, y) =/= g(y, x)
+ack $a

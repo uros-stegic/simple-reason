@@ -12,6 +12,8 @@ enum FormulaType {
     PROP_TRUE,
     PROP_FALSE,
     PREDICATE,
+    EQUALS,
+    NOT_EQUALS,
     FOR_ALL,
     EXISTS,
     NEGATION,

@@ -13,6 +13,8 @@ Formula Simplification::transform(const Formula &f) const
     	case PROP_LETTER:
     	case PROP_TRUE:
     	case PROP_FALSE:
+		case EQUALS:
+		case NOT_EQUALS:
 		case PREDICATE:
     	    return f->copy();
     	case NEGATION: {

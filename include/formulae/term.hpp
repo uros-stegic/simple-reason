@@ -17,7 +17,7 @@ class Transformation;
 
 typedef std::shared_ptr<const BaseTerm> Term;
 
-struct TermCompare{
+struct TermCompare {
     bool operator()(const Term&, const Term&) const;
 };
 

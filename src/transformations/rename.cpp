@@ -55,6 +55,22 @@ Formula Rename::transform(const Formula& f) const
             }
             return std::make_shared<Predicate>(ts, th->name());
         }
+        case EQUALS: {
+            const Equals* th = static_cast<const Equals*>(f.get());
+            std::vector<Term> ts;
+            for(auto &&i: th->terms()) {
+                ts.push_back(i->transform(*this));
+            }
+            return std::make_shared<Equals>(ts[0], ts[1]);
+        }
+        case NOT_EQUALS: {
+            const NotEquals* th = static_cast<const NotEquals*>(f.get());
+            std::vector<Term> ts;
+            for(auto &&i: th->terms()) {
+                ts.push_back(i->transform(*this));
+            }
+            return std::make_shared<NotEquals>(ts[0], ts[1]);
+        }
         case FOR_ALL: {
             const ForAll* th = static_cast<const ForAll*>(f.get());
             Term t = th->var()->copy();

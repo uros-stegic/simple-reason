@@ -52,6 +52,7 @@ EXIT			"exit"|"quit"
 END_OF_EXPRESSION		"\n"
 %%
 
+{ACK_TOKEN}			{ return ACK_TOKEN; }
 {PRENEX_TOKEN}		{ return PRENEX_TOKEN; }
 {QUANT_UP}			{ return QUANT_UP; }
 {DELETE_TOKEN}		{ return DELETE_TOKEN; }

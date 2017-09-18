@@ -16,3 +16,8 @@ void NotEquals::print_formula(std::ostream & out) const
     m_t2->print_term(out);
 }
 
+FormulaType NotEquals::get_type() const
+{
+    return NOT_EQUALS;
+}
+

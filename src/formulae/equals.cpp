@@ -16,3 +16,8 @@ void Equals::print_formula(std::ostream & out) const
     m_t2->print_term(out);
 }
 
+FormulaType Equals::get_type() const
+{
+    return EQUALS;
+}
+

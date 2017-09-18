@@ -12,6 +12,9 @@ Formula NegationDistribution::transform(const Formula &f) const
     	case PROP_LETTER:
     	case PROP_FALSE:
     	case PROP_TRUE:
+		case EQUALS:
+		case NOT_EQUALS:
+		case PREDICATE:
     	    return f->copy();
     	case NEGATION: {
     	    const Not *notF = static_cast<const Not*>(f.get());
@@ -60,6 +63,16 @@ Formula NegationDistribution::transform(const Formula &f) const
 				case PREDICATE: {
 					return f->copy();
 				}
+				case EQUALS: {
+					const Equals* eq = static_cast<const Equals*>(operand.get());
+					auto terms = eq->terms();
+					return std::make_shared<NotEquals>(terms[0], terms[1]);
+				}
+				case NOT_EQUALS: {
+					const NotEquals* eq = static_cast<const NotEquals*>(operand.get());
+					auto terms = eq->terms();
+					return std::make_shared<Equals>(terms[0], terms[1]);
+				}
     	    }
     	}
     	case CONJUNCTION: {
@@ -95,9 +108,6 @@ Formula NegationDistribution::transform(const Formula &f) const
 			const Exists *fall = static_cast<const Exists*>(f.get());
 			Formula op = fall->get_operand()->transform(*this);
 			return std::make_shared<Exists>(op, fall->var());
-		}
-		case PREDICATE: {
-			return f->copy();
 		}
     }
 }

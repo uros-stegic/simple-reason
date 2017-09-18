@@ -11,7 +11,7 @@ configure_file (
     "${PROJECT_BINARY_DIR}/config.h"
 )
 
-add_definitions(-std=c++11)
+add_definitions(-std=c++14)
 
 # Flex&Bison configuration
 find_package (FLEX 2.5.35)

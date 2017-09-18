@@ -8,6 +8,7 @@ class Equals : public Predicate{
   public:
     Equals(const Term&, const Term&);
     virtual void print_formula(std::ostream & out) const override;
+    FormulaType get_type() const override;
 
 private:
     Term m_t1, m_t2;

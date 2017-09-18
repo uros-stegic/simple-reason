@@ -10,6 +10,8 @@ Formula QuantifierExtraction::transform(const Formula& f) const
     	case PROP_FALSE:
     	case PROP_TRUE:
     	case PROP_LETTER:
+		case EQUALS:
+		case NOT_EQUALS:
 		case PREDICATE:
 		case NEGATION: {
     	    return f->copy();
