@@ -196,7 +196,11 @@ Formula AckermannStep::reduce() const
 		return std::make_shared<True>();
 	}
 	Formula f = std::make_shared<If>(make_cons(res.begin()->first), res.begin()->second);
+	int i = 0;
 	for(auto&& pr : res) {
+		if( i++ == 0 ) {
+			continue;
+		}
 		f = std::make_shared<And>(f, std::make_shared<If>(make_cons(pr.first), pr.second));
 	}
 
