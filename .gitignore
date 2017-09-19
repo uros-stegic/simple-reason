@@ -2,3 +2,9 @@
 build
 CMakeLists.txt.user
 
+docs/ack_red.aux
+docs/ack_red.log
+docs/ack_red.out
+docs/ack_red.synctex.gz
+docs/ack_red.toc
+

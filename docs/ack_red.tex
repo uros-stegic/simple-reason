@@ -1,0 +1,145 @@
+\documentclass[a4paper]{article}
+
+\usepackage{color}
+\usepackage{url}
+%\usepackage[T2A]{fontenc} % enable Cyrillic fonts
+\usepackage[utf8]{inputenc} % make weird characters work
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{verbatim}
+\usepackage[english,serbian]{babel}
+%\usepackage[english,serbianc]{babel} %ukljuciti babel sa ovim opcijama, umesto gornjim, ukoliko se koristi cirilica
+\setcounter{tocdepth}{1}
+\usepackage[unicode]{hyperref}
+\hypersetup{colorlinks,citecolor=green,filecolor=green,linkcolor=blue,urlcolor=blue}
+\usepackage{amsmath}
+%\newtheorem{primer}{Пример}[section] %ćirilični primer
+\newtheorem{primer}{Primer}[section]
+\newtheorem{definicija}[primer]{Definicija}
+\captionsetup[figure]{name=Grafik}
+\graphicspath{{./images/}}
+
+\begin{document}
+
+\title{Svođenje problema ispitivanja zadovoljivosti baznih EUF formula na SAT Akermanovom redukcijom \\ \small{~\\Seminarski rad u okviru kursa\\Automatsko rezonovanje\\ Matematički fakultet}}
+
+\author{
+	Una Stanković, Uroš Stegić\\
+	una\_stankovic@yahoo.com, mi10287@alas.matf.bg.ac.rs}
+\date{18.~septembar 2017.}
+\maketitle
+
+
+\tableofcontents
+
+\newpage
+
+
+\section{Uvod}
+\label{sec:uvod}
+U okviru ovog projekta, razvijeno je sintaksno okruženje za rad sa iskaznom logikom i logikom prvog reda. Definicija jezika će biti predstavljena u sekciji \ref{sec:uputstvo}. Pored samog jezika, razvijen je interpreter koji izvršava k\^od. Obim seta alata potrebnih za primenu same Akermanove redukcije se vremenom povećao, tako da ceo projekat ``simple reason'' sada predstavlja radni okvir koji podržava sintaksu iskazne, predikatske i jednakosne logike sa neinterpretiranim funkcijama, kao i osnovne transformacije nad sintaksičkim stablima.
+
+\subsection{Akermanova redukcija}
+Određeni podskup predikatske logike se može svesti na SAT problem redukcijom polazne formule zapisane u jeziku prvog reda na ekvizadovoljivu formulu iskazne logike. Jedan način da se izvede ovakvo svođenje je postupak Akermanove redukcije.
+
+Podskup logike prvog reda nad kojima je moguće izvršiti Akermanovu redukciju je:
+$$ L = \{\neg, \land, \lor, =, \neq, f_i/\alpha_i, p_i/\beta_i\}$$
+
+pri čemu su $f_i$ neitrerpretirani funkcijski siboli arnosti $\alpha_i$, $p_i$ predikatski simboli arnosti $\beta_i$. Simbol $=$ ($\neq$) se interpretira na uobičajen način: predikati se evaluiraju kao tačni ako su objekti jednaki (nejednaki). Važno je napomenuti da se Akermanova redukcija može primeniti isključivo nad formulama koje nisu kvantifikovane.
+
+\subsubsection*{Algoritam Akermanove redukcije}
+\textbf{Ulaz:} Nekvantifikovana formula jednakosne logike sa neinterpretiranim funkcijskim simbolima.
+\textbf{Izlaz:} Nekvantifikovana formula jednakosne logike bez neinterpretiranih funkcijskih simbola.
+\textbf{Algoritam}
+\begin{enumerate}
+	\item Prevesti ulaznu formulu u negacionu normalnu formu
+	\item Zameniti termove koji predstavljaju funkcijske simbole jedinstvenim identifikatorima (počev od unutrašnjih ka spoljašnjim)\\
+	primer:\\
+	$$f(f(x)) = 1 \lor f(x) \neq 2 \mapsto f_2 = 1 \lor f_1 \neq 2$$
+	$$smene: f_1 = f(x), f_2 = f(f_1)$$
+	\item za svaki funkcijski simbol iz smene, za svaki par argumenata dodati aksiomu funkcionalne konzistentnosi (\textit{functional consistency axiom}):
+	$$(x = f_1 \implies f_2 = f_1) \implies f_2 = 1 \lor f_1 \neq 2$$
+\end{enumerate}
+
+\section{Uputstvo za korišćenje}
+\label{sec:uputstvo}
+Simple reason je moguće koristiti na dva načina:
+\begin{itemize}
+	\item intreraktivni mod (REPL, read-evaluate-print-loop)
+	\item izvršavanjem skript datoteke
+\end{itemize}
+Sintaksa jezika obuhvata:\\
+\begin{tabular}{ |l|l| }
+	\hline
+	\multicolumn{2}{|c|}{Izrazi} \\
+	\hline
+	$\lnot F$ & $\sim F$ \\
+	$F_1 \land F_2$ & $F1 \& F2$ \\
+	$F_1 \lor F_2$ & $F1 | F2$ \\
+	$F_1 \implies F_2$ & $F1 => F2$ \\
+	$F_1 \Leftrightarrow F_2$ & $F1 <=> F2$ \\
+	$\forall x. \Leftrightarrow F$ & $Ax. F$ \\
+	$\exists x. \Leftrightarrow F$ & $Ex. F$ \\
+	$pred. symbols$ & $[pqr][0-9]*$ \\
+	$vars$ & $[xyz][0-9]*$ \\
+	$UF$ & $[fgh][0-9]*$ \\
+	$const$ & $[abc1-9][0-9]*$ \\
+	\hline
+\end{tabular}
+
+Naredbe okruženja:
+\begin{itemize}
+	\item \textbf{cnf F} - vraća kopiju formule F koja je u KNF
+	\item \textbf{nnf F} - vraća kopiju formule F koja je u NNF
+	\item \textbf{c\_distr F} - vraća kopiju formule F kojoj su konjunkcije spuštene u AST-u.
+	\item \textbf{d\_distr F} - vraća kopiju formule F kojoj su disjunkcije spuštene u AST-u.
+	\item \textbf{n\_distr F} - vraća kopiju formule F kojoj su negacije spuštene do listova AST-a.
+	\item \textbf{simplify F} - vraća kopiju formule F koja je pojednostavljena\footnote{više o ovim transformacijama na: http://poincare.matf.bg.ac.rs/~filip/ar/ar-iskazna-logika.pdf}.
+	\item \textbf{no\_imps F} - vraća kopiju formule F iz koje su eliminisane implikacije i ekvivalencije
+	\item \textbf{quant\_up F} - vraća kopiju formule F u kojoj su izdignuti svi kvantifikatori do korena AST-a.
+	\item \textbf{prenex F} - vraća kopiju formule F koja je u preneks normalnoj formi.
+	\item \textbf{ack F} - primenjuje Akermanovu redukciju nad kopijom formule F.
+	\item \textbf{\$a := F} - deklariše novu meta promenljivu u okruženju.
+	\item \textbf{delete \$a} - uklanja meta promenljivu iz okruženja.
+\end{itemize}
+
+\subsubsection*{Primer upotrebe}
+Prikaz jednog primera korišćenja simple reason softvera u interaktivnom modu:
+\begin{verbatim}
+> $a := Ax.Ey.p(x) => q(y)
+> $a
+Ax.Ey. p(x) => q(y)
+> nnf $a
+Ax.Ey.~p(x) | q(y)
+> quit
+
+Quiting.
+\end{verbatim}
+
+U skript modu, korisnik piše skript u datoteci koji kasnije prosleđuje programu kao argument komandne linije. Pogledajmo primer ovakve upotrebe:
+
+
+\bigskip
+Datoteka ``primer1.fml''
+\begin{verbatim}
+$a := p(x)
+$b := q(x)
+nnf $a => $b
+\end{verbatim}
+
+
+\bigskip
+Pokretanje iz komandne linije
+\begin{verbatim}
+[user@pc code]$ ./simple-reason primer1.fml
+Ax.Ey.~p(x) | q(y)
+
+Quiting.
+\end{verbatim}
+
+\section{Pregled dizajna i arhitekture}
+\label{sec:dizajn}
+Dizajn softvera je analogan onome koji je rađen na vežbama. Razlikuje se po tome što su sve vrednosti deklarisane kao konstantne kako bismo se približili funkcionalnom aspektu jezika C++. Sve transformacije nad formulama su izdvojene u zasebne celine u maniru uzorka projektovanja ``posetilac''. Formule koje se posećuju su imutabilne strukture podataka i svaka transformacija formule vraća novo sintaksno stablo.
+
+\end{document}
